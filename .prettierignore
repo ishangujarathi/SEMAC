@@ -1,0 +1,5 @@
+/node_modules
+/views/client/build
+/views/client/node_modules
+/views/client/public
+/views/teaser

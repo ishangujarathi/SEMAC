@@ -1,0 +1,25 @@
+{
+  "recommendations": [
+    "mikestead.dotenv",
+    "dsznajder.es7-react-js-snippets",
+    "miguelsolorio.fluent-icons",
+    "eamodio.gitlens",
+    "hwencc.html-tag-wrapper",
+    "oderwat.indent-rainbow",
+    "ms-vsliveshare.vsliveshare",
+    "yzhang.markdown-all-in-one",
+    "PKief.material-icon-theme",
+    "christian-kohler.npm-intellisense",
+    "jakob101.RelativePath",
+    "burkeholland.simple-react-snippets",
+    "ban.spellright",
+    "HiteshChoudhary.teacher-theme-dark",
+    "rangav.vscode-thunder-client",
+    "wix.glean",
+    "nicoespeon.abracadabra",
+    "hoovercj.vscode-power-mode",
+    "spikespaz.vscode-smoothtype",
+    "webrender.synthwave-x-fluoromachine",
+    "be5invis.vscode-custom-css"
+  ]
+}
