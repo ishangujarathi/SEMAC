@@ -4,6 +4,7 @@ import styles from '../styles/Home.module.css';
 import Content from './components/Content';
 import Header from './components/Header';
 import LeftNavbar from './components/LeftNavbar';
+import pro from '../public/pro.ico';
 
 export default function Home() {
   return (
@@ -11,7 +12,7 @@ export default function Home() {
       <Head>
         <title>Create dashboard</title>
         <meta name="description" content="Created by streamline" />
-        <link rel="icon" href="/pro.ico" />
+        <link rel="icon" href={pro} />
       </Head>
       <div className={styles.container}>
         <LeftNavbar />
