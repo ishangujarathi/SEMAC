@@ -5,6 +5,7 @@ import Content from './components/Content';
 import Header from './components/Header';
 import LeftNavbar from './components/LeftNavbar';
 import pro from '../public/pro.ico';
+import { SessionProvider } from 'next-auth/react';
 
 export default function Home() {
   return (
@@ -15,9 +16,11 @@ export default function Home() {
         <link rel="icon" href={pro} />
       </Head>
       <div className={styles.container}>
-        <LeftNavbar />
-        <Header />
-        <Content />
+        <SessionProvider>
+          <LeftNavbar />
+          <Header />
+          <Content />
+        </SessionProvider>
       </div>
     </div>
   );

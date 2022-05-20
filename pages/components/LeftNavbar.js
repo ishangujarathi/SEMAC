@@ -5,12 +5,15 @@ import {
   faBookOpen,
   faCog,
   faHeart,
+  faSignInAlt,
   faRocket,
   faSignOutAlt,
   faTachometerAlt,
 } from '@fortawesome/free-solid-svg-icons';
+import { signIn, signOut, useSession } from 'next-auth/react';
 
 function LeftNavbar() {
+  const { data: session, status } = useSession();
   return (
     <div className={styles.navcontainer}>
       <div className={styles.logo}>
@@ -26,11 +29,34 @@ function LeftNavbar() {
             <FontAwesomeIcon icon={faRocket} style={{ width: '18px', cursor: 'pointer' }} />{' '}
             <a href="#">Explore</a>
           </li>
-        
-          <li>
-            <FontAwesomeIcon icon={faSignOutAlt} style={{ width: '18px', cursor: 'pointer' }} />{' '}
-            <a href="#">Logout</a>
-          </li>
+          {status === 'unauthenticated' && (
+            <li>
+              <FontAwesomeIcon icon={faSignInAlt} style={{ width: '18px', cursor: 'pointer' }} />{' '}
+              <a
+                onClick={(e) => {
+                  e.preventDefault();
+                  signIn();
+                }}
+                href="/api/auth/signin"
+              >
+                LOGIN
+              </a>
+            </li>
+          )}
+          {status === 'authenticated' && (
+            <li>
+              <FontAwesomeIcon icon={faSignOutAlt} style={{ width: '18px', cursor: 'pointer' }} />{' '}
+              <a
+                onClick={(e) => {
+                  e.preventDefault();
+                  signOut();
+                }}
+                href="/api/auth/signout"
+              >
+                LOGOUT
+              </a>
+            </li>
+          )}
         </ul>
       </div>
     </div>
