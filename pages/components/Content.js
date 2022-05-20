@@ -63,22 +63,22 @@ function Content() {
       <div className={styles.contentwrapper}>
         <div className={styles.tabs}>
           <div className={styles.categories}>
-            <h2>Companies</h2>
+            <h2>About</h2>
           </div>
         </div>
         <div className={styles.tabs}>
           <div className={styles.categories}>
-            <h2>Customers</h2>
+            <h2>Attendance</h2>
           </div>
         </div>
         <div className={styles.tabs}>
           <div className={styles.categories}>
-            <h2>Users</h2>
+            <h2>GD/GPPt</h2>
           </div>
         </div>
         <div className={styles.tabs}>
           <div className={styles.categories}>
-            <h2>Projects</h2>
+            <h2>Academic Performance</h2>
           </div>
         </div>
       </div>

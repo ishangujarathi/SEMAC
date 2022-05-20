@@ -11,7 +11,7 @@ export default function Home() {
     <div className={styles.container}>
       <Head>
         <title>Create dashboard</title>
-        <meta name="description" content="Created by streamline" />
+        <meta name="description" content="Created by ..." />
         <link rel="icon" href={pro} />
       </Head>
       <div className={styles.container}>

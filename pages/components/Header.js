@@ -8,9 +8,9 @@ function Header() {
       <div className={styles.headwrapper}>
         <div className={styles.title}>
           <h2>
-            Hello, <span>Jenny</span>
+            Hello, <span>User</span>
           </h2>
-          <p>welcome to the board.</p>
+          <p>welcome to the Semac.</p>
         </div>
         <div className={styles.profile}>
           <img src={Image} alt="profile" className={styles.image} />
