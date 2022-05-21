@@ -23,7 +23,7 @@ function LeftNavbar() {
         <ul>
           <li>
             <FontAwesomeIcon icon={faTachometerAlt} style={{ width: '18px', cursor: 'pointer' }} />{' '}
-            <a href="#">Dashboard</a>
+            <a href="/Content">Dashboard</a>
           </li>
           <li>
             <FontAwesomeIcon icon={faRocket} style={{ width: '18px', cursor: 'pointer' }} />{' '}

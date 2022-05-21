@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '../../styles/Home.module.css';
+import styles from '../styles/home.module.css';
 import { Chart as ChartJS } from 'chart.js/auto';
 import { Doughnut, Line } from 'react-chartjs-2';
 
@@ -73,7 +73,9 @@ function Content() {
         </div>
         <div className={styles.tabs}>
           <div className={styles.categories}>
-            <h2>GD/GPPt</h2>
+            <a href="/Collab">
+              <h2>ACADEMICS</h2>
+            </a>
           </div>
         </div>
         <div className={styles.tabs}>

@@ -32,3 +32,41 @@ body {
   opacity: 1;
   transition: all 0.2s ease-in;
 }
+
+/* Marks Page */
+
+.cont {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100vh;
+  position: relative;
+  left: 10%;
+}
+
+.container {
+  width: 720px;
+  height: 440px;
+  margin: 0 auto;
+  padding-left: 32px;
+  padding-right: 32px;
+  padding-top: 40px;
+  border-radius: 12px;
+  background-color: #90a4ae;
+  font-family: Lato;
+}
+
+.container h2 {
+  text-align: center;
+}
+
+table {
+  margin: 0 auto;
+}
+
+td,
+th {
+  padding: 12px;
+  border: 2px dotted;
+}

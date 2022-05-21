@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import Image from 'next/image';
 import styles from '../styles/Home.module.css';
-import Content from './components/Content';
+import Content from './Content';
 import Header from './components/Header';
 import LeftNavbar from './components/LeftNavbar';
 import pro from '../public/pro.ico';
@@ -17,7 +17,6 @@ export default function Home() {
       </Head>
       <div className={styles.container}>
         <SessionProvider>
-          <LeftNavbar />
           <Header />
           <Content />
         </SessionProvider>

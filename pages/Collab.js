@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { getSession, signIn } from 'next-auth/react';
+import styles from '../styles/collab.module.css';
 
 const Collab = () => {
   const [loading, setLoading] = useState(true);
@@ -17,16 +18,14 @@ const Collab = () => {
 
   if (loading) {
     return <h2>Loading...</h2>;
-  } else return <div>Collab</div>;
+  } else
+    return (
+      <section className={styles.cont}>
+        <a className={styles.btn} href="/StudentGroup">
+          Create Student Group
+        </a>
+      </section>
+    );
 };
 
 export default Collab;
-
-export async function getServerSideProps() {
-  const session = await getSession();
-  return {
-    props: {
-      data: session ? 'List of premium' : 'List of free',
-    },
-  };
-}
