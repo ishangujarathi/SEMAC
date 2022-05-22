@@ -8,6 +8,11 @@
   padding: 0.5rem;
 }
 
+.roll {
+  max-width: 2rem;
+  margin-right: 0.2rem;
+}
+
 .cont form {
   position: relative;
   left: 10%;
@@ -32,6 +37,10 @@
 
   padding: 2rem;
   border-radius: 0.5rem;
+}
+
+.roll_cont {
+  display: inline-block;
 }
 
 .cont > div {
