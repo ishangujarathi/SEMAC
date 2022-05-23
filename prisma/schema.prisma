@@ -59,10 +59,10 @@ model VerificationToken {
 model Group {
     id        String   @id @default(auto()) @map("_id") @db.ObjectId
     email String @unique
-    groupNumber String @unique @default("1")
+    groupNumber String? @unique @default(uuid())
     branch String
     division String
-    batch Int
-    roll Int[]
-    status String @default("Pending")
+    batch String
+    roll String[]
+    status String? @default("Pending")
 }

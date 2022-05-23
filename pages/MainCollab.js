@@ -1,8 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useSession } from 'next-auth/react';
 import styles from '../styles/main-collab.module.css';
+import axios from 'axios';
+import Gd from './components/Gd';
+import Gs from './components/Gs';
+import Ha from './components/Ha';
+import Edip from './components/Edip';
 
 export const MainCollab = () => {
+  const { data: session, status } = useSession();
+
   const [state, setState] = useState({
+    statuss: '',
     gd: false,
     gs: false,
     ha: false,
@@ -11,180 +20,135 @@ export const MainCollab = () => {
     sdp: false,
     edai: false,
   });
+
   const [roll, setRoll] = useState({
-    r1: 0,
-    r2: 0,
-    r3: 0,
-    r4: 0,
-    r5: 0,
-    r6: 0,
+    rolll: [],
+    r1: '0',
+    r2: '0',
+    r3: '0',
+    r4: '0',
+    r5: '0',
+    r6: '0',
   });
+
+  useEffect(() => {
+    (async () => {
+      const email = session?.user.email;
+      await axios.get(`http://localhost:3000/api/Group/group/?email=${email}`).then((res) => {
+        const [r11, r22, r33, r44, r55, r66] = res.data.roll;
+        setRoll({
+          r1: r11,
+          r2: r22,
+          r3: r33,
+          r4: r44,
+          r5: r55,
+          r6: r66,
+        });
+        console.log(`r11 is: ${r11}`);
+      });
+    })();
+  }, []);
 
   const { r1, r2, r3, r4, r5, r6 } = roll;
   const { gd, gs, ha, mse, ese, sdp, edai } = state;
 
-  return (
-    <section className={styles.cont}>
-      <nav>
-        <ul>
-          <li>
-            <button
-              onClick={(e) => {
-                e.preventDefault();
-                setState({ gd: true });
-              }}
-            >
-              GD
-            </button>
-          </li>
-          <li>
-            <button
-              onClick={(e) => {
-                e.preventDefault();
-                setState({ gs: true });
-              }}
-            >
-              GS
-            </button>
-          </li>
-          <li>
-            <button
-              onClick={(e) => {
-                e.preventDefault();
-                setState({ ha: true });
-              }}
-            >
-              HA
-            </button>
-          </li>
-          <li>
-            <button
-              onClick={(e) => {
-                e.preventDefault();
-                setState({ mse: true });
-              }}
-            >
-              MSE
-            </button>
-          </li>
-          <li>
-            <button
-              onClick={(e) => {
-                e.preventDefault();
-                setState({ ese: true });
-              }}
-            >
-              ESE
-            </button>
-          </li>
-          <li>
-            <button
-              onClick={(e) => {
-                e.preventDefault();
-                setState({ sdp: true });
-              }}
-            >
-              SDP
-            </button>
-          </li>
-          <li>
-            <button
-              onClick={(e) => {
-                e.preventDefault();
-                setState({ edai: true });
-              }}
-            >
-              EDAI
-            </button>
-          </li>
-        </ul>
-      </nav>
-      <main className={styles.cont}>
-        {gd === false &&
-          gs === false &&
-          ha === false &&
-          mse === false &&
-          ese === false &&
-          sdp === false &&
-          edai === false && <h1>Please select an assessment</h1>}
-        {gd === true && (
-          <>
-            <h1>UPLOAD YOUR CONTENT FOR GD</h1>
-            <label>
-              ROLL NO: {r1}
-              <input type="file" name="" id="" />
-            </label>
-            <label>
-              ROLL NO: {r2}
-              <input type="file" name="" id="" />
-            </label>
-            <label>
-              ROLL NO: {r3}
-              <input type="file" name="" id="" />
-            </label>
-            <label>
-              ROLL NO: {r4}
-              <input type="file" name="" id="" />
-            </label>
-            <label>
-              ROLL NO: {r5}
-              <input type="file" name="" id="" />
-            </label>
-            <label>
-              ROLL NO: {r6}
-              <input type="file" name="" id="" />
-            </label>
-          </>
-        )}
-        {gs === true && (
-          <>
-            <label>
-              PLEASE SUBMIT YOUR GROUP PPT
-              <input type="file" name="" id="" />
-            </label>
-          </>
-        )}
-        {ha === true && (
-          <>
-            <label>
-              PLEASE SUBMIT YOUR HA Report (SURVEY/CASE-STUDY/DESIGN)
-              <input type="file" name="" id="" />
-            </label>
-            <label>
-              PLEASE ENTER YOUR BLOG LINK
-              <input type="text" />
-            </label>
-          </>
-        )}
-        {mse === true && <></>}
-        {ese === true && <></>}
-        {sdp === true && (
-          <>
-            <label>
-              ENTER REPO LINK OF YOUR PROJECT:
-              <input type="text" />
-            </label>
-            <label>
-              UPLOAD PROJECT REPORT:
-              <input type="file" name="" id="" />
-            </label>
-          </>
-        )}
-        {edai === true && (
-          <>
-            <label>
-              ENTER REPO LINK OF YOUR PROJECT:
-              <input type="text" />
-            </label>
-            <label>
-              UPLOAD PROJECT REPORT:
-              <input type="file" name="" id="" />
-            </label>
-          </>
-        )}
-      </main>
-    </section>
-  );
+  if (status === 'authenticated') {
+    return (
+      <section className={styles.cont}>
+        <nav>
+          <ul>
+            <li>
+              <button
+                onClick={(e) => {
+                  e.preventDefault();
+                  setState({ gd: true });
+                }}
+              >
+                GD
+              </button>
+            </li>
+            <li>
+              <button
+                onClick={(e) => {
+                  e.preventDefault();
+                  setState({ gs: true });
+                }}
+              >
+                GS
+              </button>
+            </li>
+            <li>
+              <button
+                onClick={(e) => {
+                  e.preventDefault();
+                  setState({ ha: true });
+                }}
+              >
+                HA
+              </button>
+            </li>
+            <li>
+              <button
+                onClick={(e) => {
+                  e.preventDefault();
+                  setState({ mse: true });
+                }}
+              >
+                MSE
+              </button>
+            </li>
+            <li>
+              <button
+                onClick={(e) => {
+                  e.preventDefault();
+                  setState({ ese: true });
+                }}
+              >
+                ESE
+              </button>
+            </li>
+            <li>
+              <button
+                onClick={(e) => {
+                  e.preventDefault();
+                  setState({ sdp: true });
+                }}
+              >
+                SDP
+              </button>
+            </li>
+            <li>
+              <button
+                onClick={(e) => {
+                  e.preventDefault();
+                  setState({ edai: true });
+                }}
+              >
+                EDAI
+              </button>
+            </li>
+          </ul>
+        </nav>
+        <main className={styles.cont}>
+          {gd === false &&
+            gs === false &&
+            ha === false &&
+            mse === false &&
+            ese === false &&
+            sdp === false &&
+            edai === false && <h1>Please select an assessment</h1>}
+          {gd === true && <Gd />}
+          {gs === true && <Gs />}
+          {ha === true && <Ha />}
+          {mse === true && <></>}
+          {ese === true && <></>}
+          {sdp === true && <Edip />}
+          {edai === true && <Edip />}
+        </main>
+      </section>
+    );
+  }
+  return <a href="/api/auth/signin">SIGN IN</a>;
 };
 
 export default MainCollab;

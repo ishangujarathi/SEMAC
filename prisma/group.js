@@ -5,16 +5,20 @@ import prisma from './prisma';
 
 export const getStatus = async (email) => {
   const group = await prisma.group.findUnique({
-    where: { email },
+    where: { email: email },
   });
-  const status = group.status;
-  return status;
+  const res = JSON.parse(JSON.stringify(group));
+  return res;
 };
 
 // CREATE
 export const createGroup = async (email, branch, division, batch, roll) => {
   const group = await prisma.group.create({
     data: {
+      email,
+      branch,
+      division,
+      batch,
       roll,
     },
   });

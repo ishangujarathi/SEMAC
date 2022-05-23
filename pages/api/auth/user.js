@@ -1,8 +1,9 @@
 // pages/api/user
 
 import { createUser, deleteUser, getAllUsers, getUser, updateUser } from '../../../prisma/user';
+import { withSentry } from '@sentry/nextjs';
 
-export default async function handle(req, res) {
+async function handle(req, res) {
   try {
     switch (req.method) {
       case 'GET': {
@@ -42,3 +43,5 @@ export default async function handle(req, res) {
     return res.status(500).json({ ...error, message: error.message });
   }
 }
+
+export default withSentry(handle);
