@@ -16,9 +16,6 @@ function LeftNavbar() {
   const { data: session, status } = useSession();
   return (
     <div className={styles.navcontainer}>
-      <div className={styles.logo}>
-        <h2>Streamline</h2>
-      </div>
       <div className={styles.wrapper}>
         <ul>
           <li>

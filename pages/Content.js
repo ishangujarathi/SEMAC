@@ -80,7 +80,7 @@ function Content() {
         </div>
         <div className={styles.tabs}>
           <div className={styles.categories}>
-            <h2>Academic Performance</h2>
+            <h2>PERFORMANCE</h2>
           </div>
         </div>
       </div>

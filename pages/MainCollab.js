@@ -129,7 +129,7 @@ export const MainCollab = () => {
             </li>
           </ul>
         </nav>
-        <main className={styles.cont}>
+        <main className={styles.main}>
           {gd === false &&
             gs === false &&
             ha === false &&
@@ -137,7 +137,7 @@ export const MainCollab = () => {
             ese === false &&
             sdp === false &&
             edai === false && <h1>Please select an assessment</h1>}
-          {gd === true && <Gd />}
+          {gd === true && <Gd r1={r1} r2={r2} r3={r3} r4={r4} r5={r5} r6={r6} />}
           {gs === true && <Gs />}
           {ha === true && <Ha />}
           {mse === true && <></>}

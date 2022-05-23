@@ -4,20 +4,51 @@
   align-items: center;
   justify-content: center;
   height: 100vh;
+  background: url(../images/collab.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.main {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 15vh;
+  height: 40vh;
+  width: 50vw;
+  left: 6%;
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 0.125vw;
+  overflow: hidden;
 }
 
 .cont nav ul li {
   display: inline;
-  margin: 1rem;
+  margin: 0.063vw;
 }
 
 .cont nav {
-  margin-top: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: darkslategrey;
+  position: fixed;
+  top: 0%;
+  width: 100vw;
+  padding: 1vh;
+  border-bottom-right-radius: 3vw;
+  border-bottom-left-radius: 3vw;
 }
 
 .cont nav ul li button {
-  padding: 0.5rem;
-  border-radius: 0.3rem;
+  padding: 0.031vw;
+  border-radius: 0.019vw;
   border: none;
   background-color: cyan;
   transition: 0.8s all cubic-bezier(0.23, 1, 0.32, 1);

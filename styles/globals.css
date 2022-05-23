@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+
 html,
 body {
   padding: 0;
@@ -12,9 +15,16 @@ a {
 }
 
 * {
+  font-family: 'Poppins', sans-serif;
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+button,
+h2 {
+  font-family: 'Montserrat', sans-serif;
+  text-transform: uppercase;
 }
 
 body {
@@ -46,13 +56,13 @@ body {
 }
 
 .container {
-  width: 720px;
-  height: 440px;
+  width: 45vw;
+  height: 27.5vw;
   margin: 0 auto;
-  padding-left: 32px;
-  padding-right: 32px;
-  padding-top: 40px;
-  border-radius: 12px;
+  padding-left: 2vw;
+  padding-right: 2vw;
+  padding-top: 2.5vw;
+  border-radius: 0.75vw;
   background-color: #90a4ae;
   font-family: Lato;
 }
@@ -67,6 +77,6 @@ table {
 
 td,
 th {
-  padding: 12px;
-  border: 2px dotted;
+  padding: 0.75vw;
+  border: 0.125vw dotted;
 }

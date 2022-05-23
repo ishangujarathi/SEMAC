@@ -8,7 +8,7 @@
 
 .btn {
   background-color: aqua;
-  border-radius: 0.5rem;
-  padding: 0.5rem;
+  border-radius: 0.031vw;
+  padding: 0.031vw;
   font-weight: 600;
 }

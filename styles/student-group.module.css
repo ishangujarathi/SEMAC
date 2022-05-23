@@ -5,12 +5,13 @@
   justify-content: center;
   height: 100vh;
   background-color: rgb(255, 252, 166);
-  padding: 0.5rem;
+  padding: 0.031vw;
 }
 
 .roll {
-  max-width: 2rem;
-  margin-right: 0.2rem;
+  max-width: 0.5vw;
+  max-height: 0.2vh;
+  margin-right: 0.7vw;
 }
 
 .cont form {
@@ -20,7 +21,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
+  gap: 0.5vw;
   background: #7f7fd5; /* fallback for old browsers */
   background: -webkit-linear-gradient(
     to right,
@@ -35,8 +36,8 @@
     #7f7fd5
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
-  padding: 2rem;
-  border-radius: 0.5rem;
+  padding: 2vw;
+  border-radius: 0.8vw;
 }
 
 .roll_cont {
@@ -52,15 +53,15 @@
 }
 
 .cont > form input[type='text'] {
-  border-radius: 0.3rem;
+  border-radius: 0.3vw;
   border: none;
-  padding: 0.2rem;
+  padding: 1vw;
 }
 
 .cont > form input[type='submit'] {
-  border-radius: 0.3rem;
+  border-radius: 0.5vw;
   border: none;
-  padding: 0.5rem;
+  padding: 0.6rem;
   background-color: rgba(255, 228, 196, 0.704);
   transition: 0.8s all cubic-bezier(0.23, 1, 0.32, 1);
   will-change: background-color;
