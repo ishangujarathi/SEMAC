@@ -15,9 +15,6 @@ export const MainCollab = () => {
     gd: false,
     gs: false,
     ha: false,
-    mse: false,
-    ese: false,
-    sdp: false,
     edai: false,
   });
 
@@ -50,7 +47,7 @@ export const MainCollab = () => {
   }, []);
 
   const { r1, r2, r3, r4, r5, r6 } = roll;
-  const { gd, gs, ha, mse, ese, sdp, edai } = state;
+  const { gd, gs, ha, edai } = state;
 
   if (status === 'authenticated') {
     return (
@@ -130,19 +127,12 @@ export const MainCollab = () => {
           </ul>
         </nav>
         <main className={styles.main}>
-          {gd === false &&
-            gs === false &&
-            ha === false &&
-            mse === false &&
-            ese === false &&
-            sdp === false &&
-            edai === false && <h1>Please select an assessment</h1>}
+          {gd === false && gs === false && ha === false && edai === false && (
+            <h1>Please select an assessment</h1>
+          )}
           {gd === true && <Gd r1={r1} r2={r2} r3={r3} r4={r4} r5={r5} r6={r6} />}
           {gs === true && <Gs />}
           {ha === true && <Ha />}
-          {mse === true && <></>}
-          {ese === true && <></>}
-          {sdp === true && <Edip />}
           {edai === true && <Edip />}
         </main>
       </section>

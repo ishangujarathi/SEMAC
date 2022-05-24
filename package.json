@@ -12,6 +12,7 @@
     "preparing": "git pull && yarn set version berry && yarn install && yarn husky install && yarn husky add .husky/commit-msg 'yarn commitlint --edit $1' && cd views/client && yarn set version berry && yarn install"
   },
   "dependencies": {
+    "@clerk/nextjs": "^3.6.5",
     "@commitlint/cli": "^17.0.0",
     "@commitlint/config-conventional": "^17.0.0",
     "@fortawesome/fontawesome-svg-core": "^6.1.1",

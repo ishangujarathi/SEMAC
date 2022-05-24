@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from '../styles/home.module.css';
-import { Chart as ChartJS } from 'chart.js/auto';
 import { Doughnut, Line } from 'react-chartjs-2';
+import Chart from 'chart.js/auto';
 
 //data for bar chart
 const data = {
@@ -60,41 +60,45 @@ const data1 = {
 function Content() {
   return (
     <div className={styles.contentcontainer}>
-      <div className={styles.contentwrapper}>
-        <div className={styles.tabs}>
-          <div className={styles.categories}>
-            <h2>About</h2>
+      <section>
+        <div className={styles.contentwrapper}>
+          <div className={styles.tabs}>
+            <div className={styles.categories}>
+              <a href="/Timetable">
+                <h2>TIMETABLE</h2>
+              </a>
+            </div>
+          </div>
+          <div className={styles.tabs}>
+            <div className={styles.categories}>
+              <h2>Attendance</h2>
+            </div>
+          </div>
+          <div className={styles.tabs}>
+            <div className={styles.categories}>
+              <a href="/Collab">
+                <h2>ACADEMICS</h2>
+              </a>
+            </div>
+          </div>
+          <div className={styles.tabs}>
+            <div className={styles.categories}>
+              <h2>PERFORMANCE</h2>
+            </div>
           </div>
         </div>
-        <div className={styles.tabs}>
-          <div className={styles.categories}>
-            <h2>Attendance</h2>
+        {/* chart started  */}
+        <div className={styles.charts}>
+          <div className={styles.bar}>
+            <h2>Sales</h2>
+            <Line data={data} className={styles.line} />
+          </div>
+          <div className={styles.circle}>
+            <h2>Customers Arrived</h2>
+            <Doughnut data={data1} className={styles.nut} />
           </div>
         </div>
-        <div className={styles.tabs}>
-          <div className={styles.categories}>
-            <a href="/Collab">
-              <h2>ACADEMICS</h2>
-            </a>
-          </div>
-        </div>
-        <div className={styles.tabs}>
-          <div className={styles.categories}>
-            <h2>PERFORMANCE</h2>
-          </div>
-        </div>
-      </div>
-      {/* chart started  */}
-      <div className={styles.charts}>
-        <div className={styles.bar}>
-          <h2>Sales</h2>
-          <Line data={data} width={400} height={400} />
-        </div>
-        <div className={styles.circle}>
-          <h2>Customers Arrived</h2>
-          <Doughnut data={data1} width={400} height={400} />
-        </div>
-      </div>
+      </section>
     </div>
   );
 }

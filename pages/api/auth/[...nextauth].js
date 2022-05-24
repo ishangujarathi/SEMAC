@@ -13,4 +13,6 @@ export default NextAuth({
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     }),
   ],
+  url: process.env.NEXTAUTH_URL,
+  secret: process.env.JWT_SECRET,
 });

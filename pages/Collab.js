@@ -36,8 +36,7 @@ const Collab = () => {
 
   return (
     <section className={styles.cont}>
-      <h1>Hi</h1>
-      {(statuses === null || statuses === '') && (
+      {(statuses === null || statuses === '' || statuses === undefined) && (
         <a className={styles.btn} href="/StudentGroup">
           Create Student Group
         </a>

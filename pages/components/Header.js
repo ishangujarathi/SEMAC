@@ -1,21 +1,22 @@
 import React from 'react';
-import styles from '../../styles/Home.module.css';
-import Image from '../../images/watermark.png';
+import styles from '../../styles/home.module.css';
+import { useSession } from 'next-auth/react';
 
 function Header() {
+  const { data: session, status } = useSession();
   return (
     <div className={styles.headcontainer}>
-      <div className={styles.headwrapper}>
-        <div className={styles.title}>
-          <h2>
-            Hello, <span>User</span>
-          </h2>
-          <p>welcome to the Semac.</p>
-        </div>
-        <div className={styles.profile}>
-          <img src={Image} alt="profile" className={styles.image} />
-        </div>
+      <div className={styles.title}>
+        <h2>
+          Hello, <span>User</span>
+        </h2>
+        <p>welcome to the Semac.</p>
       </div>
+      {status === 'authenticated' && (
+        <div className={styles.profile}>
+          <img src={session?.user.image} alt="profile" className={styles.image} />
+        </div>
+      )}
     </div>
   );
 }

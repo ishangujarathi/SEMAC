@@ -14,12 +14,12 @@ const StudentGroup = () => {
     branch: '',
     division: '',
     batch: '',
-    r1: 0,
-    r2: 0,
-    r3: 0,
-    r4: 0,
-    r5: 0,
-    r6: 0,
+    r1: '0',
+    r2: '0',
+    r3: '0',
+    r4: '0',
+    r5: '0',
+    r6: '0',
   });
 
   email = session?.user.email;
@@ -90,8 +90,8 @@ const StudentGroup = () => {
             </label>
           </div>
           <div>
-            <label>
-              ROLL NUMBERS: &nbsp;
+            <label className={styles.roll_label}>
+              ROLL NUMBERS: &nbsp;&nbsp;
               <div className={styles.roll_cont}>
                 <input
                   name="r1"

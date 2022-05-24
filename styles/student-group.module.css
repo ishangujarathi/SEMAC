@@ -1,22 +1,28 @@
 .cont {
+  overflow: hidden;
+  position: relative;
+  left: 12%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding-right: 10vw;
+  background-color: #e8d5b5;
+  width: 100%;
   height: 100vh;
-  background-color: rgb(255, 252, 166);
-  padding: 0.031vw;
+  border-top-left-radius: 3vw;
 }
 
 .roll {
-  max-width: 0.5vw;
-  max-height: 0.2vh;
+  text-align: center;
+  max-width: 3vw;
+  max-height: 3vw;
   margin-right: 0.7vw;
 }
 
 .cont form {
   position: relative;
-  left: 10%;
+  left: -2%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -35,9 +41,17 @@
     #86a8e7,
     #7f7fd5
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
+  overflow: hidden;
   padding: 2vw;
   border-radius: 0.8vw;
+}
+
+.cont form > h1 {
+  font-size: 2vw;
+}
+
+.cont > form > div > label {
+  font-size: 1.5vw;
 }
 
 .roll_cont {
@@ -56,14 +70,20 @@
   border-radius: 0.3vw;
   border: none;
   padding: 1vw;
+  font-size: 1.5vw;
+}
+
+.roll_label {
+  margin-left: 1vw;
 }
 
 .cont > form input[type='submit'] {
   border-radius: 0.5vw;
   border: none;
-  padding: 0.6rem;
+  padding: 0.5vw;
   background-color: rgba(255, 228, 196, 0.704);
   transition: 0.8s all cubic-bezier(0.23, 1, 0.32, 1);
+  font-size: 1.5vw;
   will-change: background-color;
 }
 
