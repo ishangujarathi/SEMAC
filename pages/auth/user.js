@@ -1,7 +1,6 @@
 // pages/api/user
 
 import { createUser, deleteUser, getAllUsers, getUser, updateUser } from '../../../prisma/user';
-import { withSentry } from '@sentry/nextjs';
 
 async function handle(req, res) {
   try {
@@ -44,4 +43,4 @@ async function handle(req, res) {
   }
 }
 
-export default withSentry(handle);
+export default handle;

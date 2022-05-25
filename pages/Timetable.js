@@ -7,7 +7,7 @@ const Timetable = () => {
       <svg className={styles.svg} viewBox="0 0 960 300">
         <symbol id="s-text">
           <text textAnchor="middle" x="50%" y="80%">
-            PLEASE SELECT AN OPTION
+            WELCOME TO TIMETABLE
           </text>
         </symbol>
 
@@ -22,9 +22,6 @@ const Timetable = () => {
       <ul>
         <li>
           <a href="/components/TimetableViewer">TIMETABLE VIEWER</a>
-        </li>
-        <li>
-          <a href="/components/TimetablePlanner">TIMETABLE PLANNER</a>
         </li>
       </ul>
     </section>

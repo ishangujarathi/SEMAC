@@ -1,7 +1,6 @@
 // pages/api/user
 
 import { getAllGroups, getStatus, createGroup, patchStatus } from '../../../prisma/group';
-import { withSentry } from '@sentry/nextjs';
 
 async function handle(req, res) {
   try {
@@ -45,4 +44,4 @@ async function handle(req, res) {
   }
 }
 
-export default withSentry(handle);
+export default handle;
