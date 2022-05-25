@@ -7,10 +7,10 @@ async function handle(req, res) {
   try {
     switch (req.method) {
       case 'GET': {
-        if (req.query.id) {
+        if (req.query.email) {
           // Get a single user if id is provided is the query
           // api/users?id=1
-          const user = await getUser(req.query.id);
+          const user = await getUser(req.query.email);
           return res.status(200).json(user);
         } else {
           // Otherwise, fetch all users
@@ -32,8 +32,8 @@ async function handle(req, res) {
       }
       case 'DELETE': {
         // Delete an existing user
-        const { id } = req.body;
-        const user = await deleteUser(id);
+        const { email } = req.body;
+        const user = await deleteUser(email);
         return res.json(user);
       }
       default:

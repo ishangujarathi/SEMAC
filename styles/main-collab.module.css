@@ -1,18 +1,13 @@
 .cont {
   align-items: center;
-  align-items: center;
   background: url(../images/collab.jpg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   border-top-left-radius: 3vw;
   display: flex;
-  display: flex;
-  flex-direction: column;
   flex-direction: column;
   height: 100vh;
-  height: 100vh;
-  justify-content: center;
   justify-content: center;
   left: 12%;
   overflow: hidden;

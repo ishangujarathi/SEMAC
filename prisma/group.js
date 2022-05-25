@@ -3,6 +3,12 @@ import prisma from './prisma';
 
 // READ
 
+export const getAllGroups = async () => {
+  const group = await prisma.group.findMany();
+  const res = JSON.parse(JSON.stringify(group));
+  return res;
+};
+
 export const getStatus = async (email) => {
   const group = await prisma.group.findUnique({
     where: { email: email },

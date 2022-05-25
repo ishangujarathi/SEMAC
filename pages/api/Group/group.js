@@ -1,13 +1,19 @@
 // pages/api/user
 
-import { getStatus, createGroup, patchStatus } from '../../../prisma/group';
+import { getAllGroups, getStatus, createGroup, patchStatus } from '../../../prisma/group';
 import { withSentry } from '@sentry/nextjs';
 
 async function handle(req, res) {
   try {
     switch (req.method) {
       case 'GET': {
-        const group = await getStatus(req.query.email);
+        let group;
+        console.log(req.query.get);
+        if (req.query.get === 'all') {
+          group = await getAllGroups();
+        } else {
+          group = await getStatus(req.query.email);
+        }
         return res.status(200).send(group);
       }
       case 'POST': {

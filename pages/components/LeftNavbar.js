@@ -19,16 +19,25 @@ function LeftNavbar() {
       <div className={styles.wrapper}>
         <ul>
           <li>
-            <FontAwesomeIcon icon={faTachometerAlt} style={{ width: '18px', cursor: 'pointer' }} />{' '}
-            <a href="/Content">Dashboard</a>
+            <FontAwesomeIcon
+              icon={faTachometerAlt}
+              style={{ width: '2vw', fontSize: '1.5vw', cursor: 'pointer' }}
+            />{' '}
+            <a href="/">Dashboard</a>
           </li>
           <li>
-            <FontAwesomeIcon icon={faRocket} style={{ width: '18px', cursor: 'pointer' }} />{' '}
+            <FontAwesomeIcon
+              icon={faRocket}
+              style={{ width: '2vw', fontSize: '1.5vw', cursor: 'pointer' }}
+            />{' '}
             <a href="#">Explore</a>
           </li>
           {status === 'unauthenticated' && (
             <li>
-              <FontAwesomeIcon icon={faSignInAlt} style={{ width: '18px', cursor: 'pointer' }} />{' '}
+              <FontAwesomeIcon
+                icon={faSignInAlt}
+                style={{ width: '2vw', fontSize: '1.5vw', cursor: 'pointer' }}
+              />{' '}
               <a
                 onClick={(e) => {
                   e.preventDefault();
@@ -42,7 +51,10 @@ function LeftNavbar() {
           )}
           {status === 'authenticated' && (
             <li>
-              <FontAwesomeIcon icon={faSignOutAlt} style={{ width: '18px', cursor: 'pointer' }} />{' '}
+              <FontAwesomeIcon
+                icon={faSignOutAlt}
+                style={{ width: '2vw', fontSize: '1.5vw', cursor: 'pointer' }}
+              />{' '}
               <a
                 onClick={(e) => {
                   e.preventDefault();

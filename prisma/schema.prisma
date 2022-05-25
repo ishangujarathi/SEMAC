@@ -40,7 +40,7 @@ model Session {
 model User {
   id        String   @id @default(auto()) @map("_id") @db.ObjectId
   name          String?
-  email         String?   @unique
+  email         String   @unique
   emailVerified DateTime?
   image         String?
   accounts      Account[]
@@ -66,4 +66,11 @@ model Group {
     batch String
     roll String[]
     status String? @default("Pending")
+}
+
+model TimeTable {
+      id        String   @id @default(auto()) @map("_id") @db.ObjectId
+      branch String
+      division String
+      image String
 }

@@ -1717,7 +1717,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"clsx@npm:^1.0.4":
+"clsx@npm:^1.0.4, clsx@npm:^1.1.1":
   version: 1.1.1
   resolution: "clsx@npm:1.1.1"
   checksum: ff052650329773b9b245177305fc4c4dc3129f7b2be84af4f58dc5defa99538c61d4207be7419405a5f8f3d92007c954f4daba5a7b74e563d5de71c28c830063
@@ -2054,6 +2054,7 @@ __metadata:
     react: 18.1.0
     react-chartjs-2: ^4.1.0
     react-dom: 18.1.0
+    react-toastify: ^9.0.1
   languageName: unknown
   linkType: soft
 
@@ -4525,6 +4526,18 @@ __metadata:
     react-native:
       optional: true
   checksum: ecf1933e91013f2d41bfc781515b536bf81eb1f70ff228607841094c8330fe77d522372b359687e51c0b52b9888dba73db9ac0486aace1896ab9eb9daec102d5
+  languageName: node
+  linkType: hard
+
+"react-toastify@npm:^9.0.1":
+  version: 9.0.1
+  resolution: "react-toastify@npm:9.0.1"
+  dependencies:
+    clsx: ^1.1.1
+  peerDependencies:
+    react: ">=16"
+    react-dom: ">=16"
+  checksum: 920603bfd18d26537ad7fcd31899eea1469922176a730a8e597c199447af79cb8dba3bd30e9327aa3f841790737d564880f76c83b60ec34c4b1c5c32e2a79b06
   languageName: node
   linkType: hard
 

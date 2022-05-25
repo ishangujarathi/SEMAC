@@ -9,6 +9,29 @@
   z-index: 2000;
 }
 
+.tbg {
+  background: url('../images/tbg.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  position: relative;
+  left: 12.5%;
+  padding-right: 10vw;
+  border-top-left-radius: 3vw;
+}
+
+.ttabs {
+  padding-left: 1vw;
+  padding-right: 1vw;
+}
+
+/* .container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+} */
+
 .wrapper {
   z-index: 1;
 }
