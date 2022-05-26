@@ -1,6 +1,6 @@
 // pages/api/user
 
-import { createUser, deleteUser, getAllUsers, getUser, updateUser } from '../../../prisma/user';
+import { createUser, deleteUser, getAllUsers, getUser, updateUser } from '../../prisma/user';
 
 async function handle(req, res) {
   try {
