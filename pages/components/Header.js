@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '../../styles/home.module.css';
+import styles from '../../styles/main.module.css';
 import { useSession } from 'next-auth/react';
 
 function Header() {

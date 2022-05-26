@@ -1,4 +1,4 @@
-import styles from '../styles/home.module.css';
+import styles from '../styles/main.module.css';
 import Content from './Content';
 import TeacherContent from './TeacherContent';
 import Plogin from './Plogin.js';
