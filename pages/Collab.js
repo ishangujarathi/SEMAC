@@ -17,7 +17,7 @@ const Collab = () => {
     (async () => {
       session = await getSession();
       email = session?.user.email;
-      await axios.get(`http://localhost:3000/api/Group/group/?email=${email}`).then((res) => {
+      await axios.get(`/api/Group/group/?email=${email}`).then((res) => {
         setStatuses(res.data.status);
       });
       if (session) {

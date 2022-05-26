@@ -31,7 +31,7 @@ export const MainCollab = () => {
   useEffect(() => {
     (async () => {
       const email = session?.user.email;
-      await axios.get(`http://localhost:3000/api/Group/group/?email=${email}`).then((res) => {
+      await axios.get(`/api/Group/group/?email=${email}`).then((res) => {
         const [r11, r22, r33, r44, r55, r66] = res.data.roll;
         setRoll({
           r1: r11,

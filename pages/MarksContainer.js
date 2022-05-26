@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styles from '../styles/marks-cont.module.css';
 import GroupComponent from './components/GroupComponent';
 import MarksUpdater from './MarksUpdater';
+const environment = process.env.NODE_ENV;
 
 const MarksContainer = ({ groups }) => {
   const [click, setClick] = useState(false);
@@ -31,7 +32,10 @@ export default MarksContainer;
 export async function getServerSideProps() {
   // Fetch data from external API
 
-  const res = await fetch('http://localhost:3000/api/Group/group?get=all', {
+  const url =
+    environment === 'production' ? 'https://semac.vercel.app/api' : 'http://localhost:3000/api';
+
+  const res = await fetch(`${url}/Group/group?get=all`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
