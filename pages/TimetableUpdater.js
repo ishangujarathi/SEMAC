@@ -10,11 +10,10 @@ export class TimetableUpdater extends Component {
 
   state = {
     timetable: {},
-    branch: '',
     division: '',
   };
 
-  handleChange = (e) => setFormContent({ ...formContent, [e.target.name]: e.target.value });
+  handleChange = (e) => this.setState({ ...this.state, [e.target.name]: e.target.value });
 
   handleImageChange = async (e) => {
     const file = e.target.files[0];
@@ -27,21 +26,21 @@ export class TimetableUpdater extends Component {
 
     const formdata = new FormData();
     formdata.append('file', this.state.timetable.file);
-    formdata.append('branch', this.state.branch);
     formdata.append('division', this.state.division);
 
     axios
-      .post('/api/tt/timetable', formdata, {
+      .post('/api/Timetable/timetable', formdata, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
       })
       .then((response) => {
         toast.success(response.data.message);
-        return null;
+        console.log(`Response is: ${response.data.message}`);
       })
       .catch((error) => {
         toast.error(`Error Connecting the server`);
+        console.log(error);
       });
   };
 
@@ -50,10 +49,6 @@ export class TimetableUpdater extends Component {
       <section className={styles.cont}>
         <h1>PLEASE UPLOAD THE LATEST TIMETABLE (as jpg)</h1>
         <form onSubmit={this.onSubmit}>
-          <label>
-            BRANCH: &nbsp;&nbsp;
-            <input type="text" required name="branch" onChange={this.handleChange} />
-          </label>
           <label>
             DIVISION: &nbsp;&nbsp;
             <input type="text" required name="division" onChange={this.handleChange} />

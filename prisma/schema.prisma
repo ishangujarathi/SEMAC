@@ -68,9 +68,8 @@ model Group {
     status String? @default("Pending")
 }
 
-model TimeTable {
+model timetable {
       id        String   @id @default(auto()) @map("_id") @db.ObjectId
-      branch String
       division String
       image String
 }
