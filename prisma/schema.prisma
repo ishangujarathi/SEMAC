@@ -70,6 +70,6 @@ model Group {
 
 model timetable {
       id        String   @id @default(auto()) @map("_id") @db.ObjectId
-      division String
+      division String @unique
       image String
 }

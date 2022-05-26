@@ -1,6 +1,6 @@
 // pages/api/user
 
-import { getAllGroups, getStatus, createGroup, patchStatus } from '../../../prisma/group';
+import { getAllGroups, getGroup, createGroup, patchStatus } from '../../../prisma/group';
 
 async function handle(req, res) {
   try {
@@ -10,7 +10,7 @@ async function handle(req, res) {
         if (req.query.get === 'all') {
           group = await getAllGroups();
         } else {
-          group = await getStatus(req.query.email);
+          group = await getGroup(req.query.email);
         }
         return res.status(200).send(group);
       }

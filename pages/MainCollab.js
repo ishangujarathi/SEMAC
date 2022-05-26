@@ -87,36 +87,6 @@ export const MainCollab = () => {
               <button
                 onClick={(e) => {
                   e.preventDefault();
-                  setState({ mse: true });
-                }}
-              >
-                MSE
-              </button>
-            </li>
-            <li>
-              <button
-                onClick={(e) => {
-                  e.preventDefault();
-                  setState({ ese: true });
-                }}
-              >
-                ESE
-              </button>
-            </li>
-            <li>
-              <button
-                onClick={(e) => {
-                  e.preventDefault();
-                  setState({ sdp: true });
-                }}
-              >
-                SDP
-              </button>
-            </li>
-            <li>
-              <button
-                onClick={(e) => {
-                  e.preventDefault();
                   setState({ edai: true });
                 }}
               >

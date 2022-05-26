@@ -9,7 +9,7 @@ export const getAllGroups = async () => {
   return res;
 };
 
-export const getStatus = async (email) => {
+export const getGroup = async (email) => {
   const group = await prisma.group.findUnique({
     where: { email: email },
   });

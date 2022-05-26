@@ -2,6 +2,12 @@ import React, { Component } from 'react';
 
 export class Gd extends Component {
   state = {
+    file1: {},
+    file2: {},
+    file3: {},
+    file4: {},
+    file5: {},
+    file6: {},
     r1: this.props.r1,
     r2: this.props.r2,
     r3: this.props.r3,
@@ -10,9 +16,47 @@ export class Gd extends Component {
     r6: this.props.r6,
   };
 
+  // Event Handlers
+
+  handleImageChange = async (e) => {
+    const file = e.target.files[0];
+    const { name } = e.target.files[0];
+    await this.setState({ timetable: { name, file }, filename: name });
+  };
+
+  onSubmit = async (e) => {
+    e.preventDefault();
+
+    const formdata = new FormData();
+    formdata.append('file', this.state.timetable.file);
+    formdata.append('division', this.state.division);
+    formdata.append('filename', this.state.filename);
+
+    axios
+      .post('/api/Timetable/timetable', formdata, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      })
+      .then((response) => {
+        toast.success(response.data.message);
+        console.log(`Response is: ${response.data.message}`);
+      })
+      .catch((error) => {
+        toast.error(`Error Connecting the server`);
+        console.log(error);
+      });
+  };
+
+  // Styles Section
+
   mystyle = {
     display: 'flex',
     flexDirection: 'column',
+    alignItems: 'center',
+    justifyContents: 'center',
+    position: 'relative',
+    left: '5.2%',
   };
 
   file = {
@@ -26,6 +70,18 @@ export class Gd extends Component {
   head = {
     fontSize: '2rem',
     marginBottom: '-4rem',
+  };
+
+  submit = {
+    width: '30%',
+    padding: '0.2vw',
+    fontSize: '1.7vw',
+    borderRadius: '1vw',
+    border: 'none',
+    backgroundColor: 'aqua',
+    position: 'relative',
+    left: '-9%',
+    top: '3%',
   };
 
   render() {
@@ -57,6 +113,7 @@ export class Gd extends Component {
             ROLL NO: {this.state.r6}
             <input type="file" name="" id="" style={this.file} />
           </label>
+          <input type="submit" value="SUBMIT" style={this.submit} />
         </form>
       </>
     );

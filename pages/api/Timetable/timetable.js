@@ -1,18 +1,13 @@
 import { createTt, getTt } from '../../../prisma/tt';
 import nc from 'next-connect';
-import { timetableUpload } from '../../../middlewares/upload';
-import Grid from 'gridfs-stream';
-import mongoose from 'mongoose';
 import middleware from '../../../middlewares/multipart';
-const conn = mongoose.createConnection(process.env.DATABASE_URL);
+import multer from 'multer';
 
-// Init gfs
-let gfs;
-
-conn.once('open', () => {
-  // Init stream
-  gfs = Grid(conn.db, mongoose.mongo);
-  gfs.collection('timetable');
+const upload = multer({
+  storage: multer.diskStorage({
+    destination: './public/timetables',
+    filename: (req, file, cb) => cb(null, file.originalname),
+  }),
 });
 
 const handler = nc({
@@ -24,7 +19,6 @@ const handler = nc({
     res.status(404).end('Page is not found');
   },
 })
-  .use(middleware)
   .get(async (req, res) => {
     if (req.query.division) {
       const tt = await getTt(req.query.division);
@@ -34,18 +28,9 @@ const handler = nc({
       return res.json(message);
     }
   })
-  .post(timetableUpload.single('files'), async (req, res) => {
-    // const data = 'Hi';
-
-    // console.log(req.body);
-
-    // if (!data) {
-    //   throw new Error('Image is not present!');
-    // }
-
-    const tt = await createTt(req.body, req.file.filename);
-    return res.status(200).json(tt);
-    // return res.status(200).send({ message: 'done', data });
+  .post(upload.array('file'), async (req, res) => {
+    const tt = await createTt(req.body.division, req.body.filename);
+    return res.status(200).json({ message: 'Timetable Updated Successfully', tt });
   });
 
 export default handler;

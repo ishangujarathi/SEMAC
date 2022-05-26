@@ -11,7 +11,7 @@ const Timetable = () => {
           </text>
         </symbol>
 
-        <g class="g-ants">
+        <g className={'g-ants'}>
           <use xlinkHref="#s-text" className={styles.text_copy}></use>
           <use xlinkHref="#s-text" className={styles.text_copy}></use>
           <use xlinkHref="#s-text" className={styles.text_copy}></use>
@@ -21,7 +21,7 @@ const Timetable = () => {
       </svg>
       <ul>
         <li>
-          <a href="/components/TimetableViewer">TIMETABLE VIEWER</a>
+          <a href="/TimetableViewer">TIMETABLE VIEWER</a>
         </li>
       </ul>
     </section>

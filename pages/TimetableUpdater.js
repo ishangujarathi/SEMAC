@@ -11,6 +11,7 @@ export class TimetableUpdater extends Component {
   state = {
     timetable: {},
     division: '',
+    filename: '',
   };
 
   handleChange = (e) => this.setState({ ...this.state, [e.target.name]: e.target.value });
@@ -18,7 +19,7 @@ export class TimetableUpdater extends Component {
   handleImageChange = async (e) => {
     const file = e.target.files[0];
     const { name } = e.target.files[0];
-    await this.setState({ timetable: { name, file } });
+    await this.setState({ timetable: { name, file }, filename: name });
   };
 
   onSubmit = async (e) => {
@@ -27,6 +28,7 @@ export class TimetableUpdater extends Component {
     const formdata = new FormData();
     formdata.append('file', this.state.timetable.file);
     formdata.append('division', this.state.division);
+    formdata.append('filename', this.state.filename);
 
     axios
       .post('/api/Timetable/timetable', formdata, {

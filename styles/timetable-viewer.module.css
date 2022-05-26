@@ -1,0 +1,33 @@
+.cont {
+  overflow: hidden;
+  position: relative;
+  left: 12%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-right: 12vw;
+  background-color: #e8d5b5;
+  width: 100%;
+  height: 100vh;
+  border-top-left-radius: 3vw;
+  gap: 3vw;
+}
+
+.cont img {
+  width: 70vw;
+  height: auto;
+  aspect-ratio: 16/9;
+}
+
+.cont h1 {
+  font-size: 4vw;
+  font-family: 'Montserrat', sans-serif;
+  text-transform: uppercase;
+  color: blue;
+}
+
+.tt {
+  height: 80%;
+  width: 70%;
+}
