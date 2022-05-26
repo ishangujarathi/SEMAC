@@ -32,8 +32,6 @@ const Collab = () => {
     }
   };
 
-  console.log(`Status is: ${statuses}`);
-
   return (
     <section className={styles.cont}>
       {(statuses === null || statuses === '' || statuses === undefined) && (

@@ -41,7 +41,6 @@ export const MainCollab = () => {
           r5: r55,
           r6: r66,
         });
-        console.log(`r11 is: ${r11}`);
       });
     })();
   }, []);

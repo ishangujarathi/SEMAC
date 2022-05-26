@@ -3,6 +3,9 @@ import TableComponent from './components/TableComponent';
 
 const Marks = () => {
   let marks;
+
+  const [total, setTotal] = useState('');
+  const [grade, setGrade] = useState('');
   useEffect(() => {
     marks = fetch('/api/route-name', {
       method: 'POST',

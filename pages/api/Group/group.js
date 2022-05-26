@@ -7,7 +7,6 @@ async function handle(req, res) {
     switch (req.method) {
       case 'GET': {
         let group;
-        console.log(req.query.get);
         if (req.query.get === 'all') {
           group = await getAllGroups();
         } else {
@@ -25,8 +24,6 @@ async function handle(req, res) {
         r5 = JSON.stringify(r5);
         r6 = JSON.stringify(r6);
         const roll = [r1, r2, r3, r4, r5, r6];
-        console.log('Roll is: ', roll);
-        console.log('batch is: ', batch);
         const group = await createGroup(email, branch, division, batch, roll);
         return res.send(group);
       }
