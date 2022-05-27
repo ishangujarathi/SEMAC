@@ -1,14 +1,14 @@
 import React from 'react';
-import styles from '../styles/main.module.css';
+import styles from '../../styles/main.module.css';
 
-const TeeacherContent = () => {
+const TeeacherHome = () => {
   return (
     <div className={(styles.contentcontainer, styles.tbg)}>
       <section>
         <div className={styles.contentwrapper}>
           <div className={styles.tabs}>
             <div className={styles.categories}>
-              <a href="/TimetableUpdater">
+              <a href="/timetable/TimetableUpdater">
                 <h2 className={styles.ttabs}>TIMETABLE UPDATER</h2>
               </a>
             </div>
@@ -22,7 +22,7 @@ const TeeacherContent = () => {
           </div>
           <div className={styles.tabs}>
             <div className={styles.categories}>
-              <a href="/MarksContainer">
+              <a href="/marks/MarksContainer">
                 <h2 className={styles.ttabs}>MARKS UPDATER</h2>
               </a>
             </div>
@@ -33,4 +33,4 @@ const TeeacherContent = () => {
   );
 };
 
-export default TeeacherContent;
+export default TeeacherHome;

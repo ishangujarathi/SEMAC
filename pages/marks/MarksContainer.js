@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
-import styles from '../styles/marks-cont.module.css';
-import GroupComponent from './components/GroupComponent';
+import styles from '../../styles/marks-cont.module.css';
+import GroupComponent from '../components/GroupComponent';
 import MarksUpdater from './MarksUpdater';
 const environment = process.env.NODE_ENV;
 
 const MarksContainer = ({ groups }) => {
   const [click, setClick] = useState(false);
   const [group, setGroup] = useState('');
+  const [roll, setRoll] = useState(['']);
   return (
     <section className={styles.cont}>
       {group === '' &&
@@ -20,9 +21,11 @@ const MarksContainer = ({ groups }) => {
             setClick={setClick}
             click={click}
             setGroup={setGroup}
+            setRoll={setRoll}
+            roll={element.roll}
           />
         ))}
-      {group !== '' && <MarksUpdater groupNumber={group} />}
+      {group !== '' && <MarksUpdater groupNumber={group} roll={roll} />}
     </section>
   );
 };

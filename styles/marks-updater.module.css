@@ -28,6 +28,7 @@
 }
 
 .cont button:hover {
+  cursor: pointer;
   background-color: #fc7149;
   color: #3a3a3a;
 }

@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { Component } from 'react';
 import { toast } from 'react-toastify';
-import styles from '../styles/timetable-updater.module.css';
+import styles from '../../styles/timetable-updater.module.css';
 
 export class TimetableUpdater extends Component {
   constructor() {

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { toast } from 'react-toastify';
 import axios from 'axios';
-import styles from '../../styles/collab-components.module.css';
+import styles from '../../../styles/collab-components.module.css';
 
 export class Gd extends Component {
   state = {

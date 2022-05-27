@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-import styles from '../../styles/collab-components.module.css';
+import styles from '../../../styles/collab-components.module.css';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
-export class Ha extends Component {
+export class Edip extends Component {
   state = {
     file: {},
     filename: '',
     groupNumber: this.props.groupNumber,
-    blogLink: '',
+    reportLink: '',
   };
 
   handleChange = (e) => this.setState({ ...this.state, [e.target.name]: e.target.value });
@@ -19,18 +19,18 @@ export class Ha extends Component {
     await this.setState({ file: { name, file }, filename: name });
   };
 
-  haSubmitHandler = async (e) => {
+  ediSubmitHandler = async (e) => {
     e.preventDefault();
     console.log(this.state.groupNumber);
     const formdata = new FormData();
 
     formdata.append('groupNumber', this.state.groupNumber);
-    formdata.append('blogLink', this.state.blogLink);
+    formdata.append('reportLink', this.state.reportLink);
     formdata.append('filename', this.state.filename);
     formdata.append('file', this.state.file.file);
 
     await axios
-      .post('/api/collab/ha', formdata, {
+      .post('/api/collab/edai', formdata, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
@@ -42,14 +42,17 @@ export class Ha extends Component {
         toast.error(`Error Connecting the server`);
       });
   };
-
   render() {
     return (
       <>
-        <h1 className={styles.head}>UPLOAD YOUR CONTENT FOR HA</h1>
-        <form onSubmit={this.haSubmitHandler} className={styles.hastyle}>
+        <h1 className={styles.head}>UPLOAD YOUR CONTENT FOR EDAI</h1>
+        <form onSubmit={this.ediSubmitHandler} className={styles.hastyle}>
           <label className={styles.label}>
-            PLEASE SUBMIT YOUR HA Report (SURVEY/CASE-STUDY/DESIGN)
+            ENTER REPO LINK OF YOUR PROJECT:
+            <input type="text" name="reportLink" onChange={this.handleChange} />
+          </label>
+          <label className={styles.label}>
+            UPLOAD PROJECT REPORT:
             <input
               type="file"
               accept=".pdf"
@@ -64,13 +67,6 @@ export class Ha extends Component {
               className={styles.file}
             />
           </label>
-          <br />
-          <p>OR</p>
-          <br />
-          <label className={styles.label}>
-            PLEASE ENTER YOUR BLOG LINK
-            <input type="text" name="blogLink" onChange={this.handleChange} />
-          </label>
           <input type="submit" value="SUBMIT" className={styles.hasubmit} />
         </form>
       </>
@@ -78,4 +74,4 @@ export class Ha extends Component {
   }
 }
 
-export default Ha;
+export default Edip;

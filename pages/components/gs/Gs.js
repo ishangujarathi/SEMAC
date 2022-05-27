@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import styles from '../../styles/collab-components.module.css';
+import styles from '../../../styles/collab-components.module.css';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 

@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import styles from '../../styles/group.module.css';
-import MarksUpdater from '../MarksUpdater';
 
 const GroupComponent = (props) => {
-  const { group_number, branch, division, setClick, click, setGroup } = props;
+  const { group_number, branch, division, setClick, click, setGroup, setRoll, roll } = props;
 
   const clickHandler = async (e, groupNumber) => {
     e.preventDefault();
     setClick(true);
     setGroup(groupNumber);
+    setRoll(roll);
   };
   return (
     <>

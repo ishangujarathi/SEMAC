@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '../styles/main.module.css';
+import styles from '../../styles/main.module.css';
 import { Doughnut, Line } from 'react-chartjs-2';
 import Chart from 'chart.js/auto';
 
@@ -57,14 +57,14 @@ const data1 = {
   ],
 };
 
-function Content() {
+function StudentHome() {
   return (
     <div className={styles.contentcontainer}>
       <section>
         <div className={styles.contentwrapper}>
           <div className={styles.tabs}>
             <div className={styles.categories}>
-              <a href="/Timetable">
+              <a href="/timetable/Timetable">
                 <h2>TIMETABLE</h2>
               </a>
             </div>
@@ -76,7 +76,7 @@ function Content() {
           </div>
           <div className={styles.tabs}>
             <div className={styles.categories}>
-              <a href="/Collab">
+              <a href="/collab/Collab">
                 <h2>ACADEMICS</h2>
               </a>
             </div>
@@ -103,4 +103,4 @@ function Content() {
   );
 }
 
-export default Content;
+export default StudentHome;

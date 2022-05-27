@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '../styles/collab.module.css';
+import styles from '../../styles/collab.module.css';
 import { useRouter } from 'next/router';
 import { getSession } from 'next-auth/react';
 const environment = process.env.NODE_ENV;
@@ -11,14 +11,14 @@ const Collab = ({ group, email }) => {
 
   const redirect = () => {
     if (typeof window !== 'undefined') {
-      router.push('/MainCollab');
+      router.push('/collab/MainCollab');
     }
   };
 
   return (
     <section className={styles.cont}>
       {(status === null || status === '' || status === undefined) && (
-        <a className={styles.btn} href="/StudentGroup">
+        <a className={styles.btn} href="/collab/StudentGroup">
           Create Student Group
         </a>
       )}

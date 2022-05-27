@@ -1,7 +1,7 @@
 import React from 'react';
 import { getSession } from 'next-auth/react';
 const environment = process.env.NODE_ENV;
-import styles from '../styles/timetable-viewer.module.css';
+import styles from '../../styles/timetable-viewer.module.css';
 
 const TimetableViewer = ({ tt }) => {
   const filename = tt.image;

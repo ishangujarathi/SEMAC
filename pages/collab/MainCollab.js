@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { useSession } from 'next-auth/react';
-import styles from '../styles/main-collab.module.css';
+import styles from '../../styles/main-collab.module.css';
 import { getSession } from 'next-auth/react';
 const environment = process.env.NODE_ENV;
-import Gd from './components/Gd';
-import Gs from './components/Gs';
-import Ha from './components/Ha';
-import Edip from './components/Edip';
+import Gd from '../components/gd/Gd';
+import Gs from '../components/gs/Gs';
+import Ha from '../components/ha/Ha';
+import Edip from '../components/edai/Edip';
 
 export const MainCollab = ({ group }) => {
   const { data: session, status } = useSession();

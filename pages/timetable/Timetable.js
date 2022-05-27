@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '../styles/timetable.module.css';
+import styles from '../../styles/timetable.module.css';
 
 const Timetable = () => {
   return (
@@ -21,7 +21,7 @@ const Timetable = () => {
       </svg>
       <ul>
         <li>
-          <a href="/TimetableViewer">TIMETABLE VIEWER</a>
+          <a href="/timetable/TimetableViewer">TIMETABLE VIEWER</a>
         </li>
       </ul>
     </section>
