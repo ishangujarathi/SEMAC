@@ -1,51 +1,26 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useSession } from 'next-auth/react';
 import styles from '../styles/main-collab.module.css';
-import axios from 'axios';
+import { getSession } from 'next-auth/react';
+const environment = process.env.NODE_ENV;
 import Gd from './components/Gd';
 import Gs from './components/Gs';
 import Ha from './components/Ha';
 import Edip from './components/Edip';
 
-export const MainCollab = () => {
+export const MainCollab = ({ group }) => {
   const { data: session, status } = useSession();
 
+  const [r1, r2, r3, r4, r5, r6] = group.roll;
+  const groupNumber = group.groupNumber;
+
   const [state, setState] = useState({
-    statuss: '',
     gd: false,
     gs: false,
     ha: false,
     edai: false,
   });
 
-  const [roll, setRoll] = useState({
-    rolll: [],
-    r1: '0',
-    r2: '0',
-    r3: '0',
-    r4: '0',
-    r5: '0',
-    r6: '0',
-  });
-
-  useEffect(() => {
-    (async () => {
-      const email = session?.user.email;
-      await axios.get(`/api/Group/group/?email=${email}`).then((res) => {
-        const [r11, r22, r33, r44, r55, r66] = res.data.roll;
-        setRoll({
-          r1: r11,
-          r2: r22,
-          r3: r33,
-          r4: r44,
-          r5: r55,
-          r6: r66,
-        });
-      });
-    })();
-  }, []);
-
-  const { r1, r2, r3, r4, r5, r6 } = roll;
   const { gd, gs, ha, edai } = state;
 
   if (status === 'authenticated') {
@@ -99,10 +74,12 @@ export const MainCollab = () => {
           {gd === false && gs === false && ha === false && edai === false && (
             <h1>Please select an assessment</h1>
           )}
-          {gd === true && <Gd r1={r1} r2={r2} r3={r3} r4={r4} r5={r5} r6={r6} />}
-          {gs === true && <Gs />}
-          {ha === true && <Ha />}
-          {edai === true && <Edip />}
+          {gd === true && (
+            <Gd groupNumber={groupNumber} r1={r1} r2={r2} r3={r3} r4={r4} r5={r5} r6={r6} />
+          )}
+          {gs === true && <Gs groupNumber={groupNumber} />}
+          {ha === true && <Ha groupNumber={groupNumber} />}
+          {edai === true && <Edip groupNumber={groupNumber} />}
         </main>
       </section>
     );
@@ -111,3 +88,25 @@ export const MainCollab = () => {
 };
 
 export default MainCollab;
+
+export async function getServerSideProps({ req }) {
+  // Fetch data from external API
+
+  const session = await getSession({ req });
+  const email = session?.user.email;
+
+  const url =
+    environment === 'production' ? 'https://semac.vercel.app/api' : `http://localhost:3000/api`;
+
+  const res = await fetch(`${url}/group/group/?email=${email}`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+
+  const group = await res.json();
+
+  // Pass data to the page via props
+  return { props: { group } };
+}

@@ -73,3 +73,34 @@ model timetable {
       division String @unique
       image String
 }
+
+model gd {
+      id        String   @id @default(auto()) @map("_id") @db.ObjectId
+      groupNumber String @unique
+      files File[]
+}
+
+type File {
+  roll String
+  filename String
+}
+
+model gs {
+      id        String   @id @default(auto()) @map("_id") @db.ObjectId
+      groupNumber String @unique
+      filename String
+}
+
+model ha {
+      id        String   @id @default(auto()) @map("_id") @db.ObjectId
+      groupNumber String @unique
+      filename String?
+      blogLink String?
+}
+
+model edai {
+      id        String   @id @default(auto()) @map("_id") @db.ObjectId
+      groupNumber String @unique
+      filename String
+      reportLink String
+}

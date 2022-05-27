@@ -6,15 +6,15 @@ const Marks = () => {
 
   const [total, setTotal] = useState('');
   const [grade, setGrade] = useState('');
-  useEffect(() => {
-    marks = fetch('/api/route-name', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(roll),
-    });
-  }, []);
+  // useEffect(() => {
+  //   marks = fetch('/api/route-name', {
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //     },
+  //     body: JSON.stringify(roll),
+  //   });
+  // }, []);
 
   return (
     <section className="cont">

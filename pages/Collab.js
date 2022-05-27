@@ -1,30 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import { getSession, signIn } from 'next-auth/react';
+import React from 'react';
 import styles from '../styles/collab.module.css';
 import { useRouter } from 'next/router';
-import axios from 'axios';
+import { getSession } from 'next-auth/react';
+const environment = process.env.NODE_ENV;
 
-const Collab = () => {
+const Collab = ({ group, email }) => {
   const router = useRouter();
 
-  let email, session;
-
-  const [visible, setVisible] = useState(true);
-
-  const [statuses, setStatuses] = useState(null);
-
-  useEffect(() => {
-    (async () => {
-      session = await getSession();
-      email = session?.user.email;
-      await axios.get(`/api/Group/group/?email=${email}`).then((res) => {
-        setStatuses(res.data.status);
-      });
-      if (session) {
-        email = JSON.stringify(session?.user.email);
-      }
-    })();
-  }, []);
+  const status = group.status;
 
   const redirect = () => {
     if (typeof window !== 'undefined') {
@@ -34,16 +17,38 @@ const Collab = () => {
 
   return (
     <section className={styles.cont}>
-      {(statuses === null || statuses === '' || statuses === undefined) && (
+      {(status === null || status === '' || status === undefined) && (
         <a className={styles.btn} href="/StudentGroup">
           Create Student Group
         </a>
       )}
-      {statuses === 'Approved' && redirect()}
-      <h1>{statuses === 'Pending' && 'Group Approval Status is Pending'}</h1>
-      {statuses === 'Rejected' && <h1>Group Plea is Rejected</h1>}
+      {status === 'Approved' && redirect()}
+      <h1>{status === 'Pending' && 'Group Approval Status is Pending'}</h1>
+      {status === 'Rejected' && <h1>Group Plea is Rejected</h1>}
     </section>
   );
 };
 
 export default Collab;
+
+export async function getServerSideProps({ req }) {
+  // Fetch data from external API
+
+  const session = await getSession({ req });
+  const email = session?.user.email;
+
+  const url =
+    environment === 'production' ? 'https://semac.vercel.app/api' : `http://localhost:3000/api`;
+
+  const res = await fetch(`${url}/group/group/?email=${email}`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+
+  const group = await res.json();
+
+  // Pass data to the page via props
+  return { props: { group, email } };
+}

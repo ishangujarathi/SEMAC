@@ -13,7 +13,6 @@ export const getTt = async (division) => {
 
 // CREATE
 export const createTt = async (division, filename) => {
-  console.log(filename);
   const tt = await prisma.timetable.create({
     data: {
       division,

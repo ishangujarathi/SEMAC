@@ -1,14 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 import { useSession } from 'next-auth/react';
 import styles from '../styles/student-group.module.css';
-import axios from 'axios';
+import { getSession } from 'next-auth/react';
 
-const StudentGroup = () => {
+const StudentGroup = ({ email }) => {
   const { data: session, status } = useSession();
   const router = useRouter();
-
-  let email;
 
   const [formContent, setFormContent] = useState({
     branch: '',
@@ -22,8 +20,6 @@ const StudentGroup = () => {
     r6: 0,
   });
 
-  email = session?.user.email;
-
   const { batch, branch, division, r1, r2, r3, r4, r5, r6 } = formContent;
 
   const onChange = (e) => setFormContent({ ...formContent, [e.target.name]: e.target.value });
@@ -33,7 +29,7 @@ const StudentGroup = () => {
 
     const data = { email, batch, branch, division, r1, r2, r4, r3, r5, r6 };
 
-    await fetch('/api/Group/group', {
+    await fetch('/api/group/group', {
       method: 'POST',
       body: JSON.stringify(data),
       headers: {
@@ -153,3 +149,13 @@ const StudentGroup = () => {
 };
 
 export default StudentGroup;
+
+export async function getServerSideProps({ req }) {
+  // Fetch data from external API
+
+  const session = await getSession({ req });
+  const email = session?.user.email;
+
+  // Pass data to the page via props
+  return { props: { email } };
+}

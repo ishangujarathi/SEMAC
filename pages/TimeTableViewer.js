@@ -27,7 +27,7 @@ export async function getServerSideProps({ req }) {
   const url =
     environment === 'production' ? 'https://semac.vercel.app/api' : `http://localhost:3000/api`;
 
-  const res = await fetch(`${url}/Group/group/?email=${email}`, {
+  const res = await fetch(`${url}/group/group/?email=${email}`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -35,7 +35,7 @@ export async function getServerSideProps({ req }) {
   });
   const user = await res.json();
 
-  const response = await fetch(`${url}/Timetable/timetable/?division=${user.division}`, {
+  const response = await fetch(`${url}/timetable/timetable/?division=${user.division}`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',

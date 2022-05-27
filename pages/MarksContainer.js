@@ -35,7 +35,7 @@ export async function getServerSideProps() {
   const url =
     environment === 'production' ? 'https://semac.vercel.app/api' : 'http://localhost:3000/api';
 
-  const res = await fetch(`${url}/Group/group?get=all`, {
+  const res = await fetch(`${url}/group/group?get=all`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',

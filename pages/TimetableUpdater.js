@@ -30,19 +30,17 @@ export class TimetableUpdater extends Component {
     formdata.append('division', this.state.division);
     formdata.append('filename', this.state.filename);
 
-    axios
-      .post('/api/Timetable/timetable', formdata, {
+    await axios
+      .post('/api/timetable/timetable', formdata, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
       })
       .then((response) => {
         toast.success(response.data.message);
-        console.log(`Response is: ${response.data.message}`);
       })
       .catch((error) => {
         toast.error(`Error Connecting the server`);
-        console.log(error);
       });
   };
 
@@ -56,7 +54,6 @@ export class TimetableUpdater extends Component {
             <input type="text" required name="division" onChange={this.handleChange} />
           </label>
           <input
-            id="paymentProof"
             type="file"
             accept=".jpg"
             required

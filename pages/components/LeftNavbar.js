@@ -25,13 +25,6 @@ function LeftNavbar() {
             />{' '}
             <a href="/">Dashboard</a>
           </li>
-          <li>
-            <FontAwesomeIcon
-              icon={faRocket}
-              style={{ width: '2vw', fontSize: '1.5vw', cursor: 'pointer' }}
-            />{' '}
-            <a href="#">Explore</a>
-          </li>
           {status === 'unauthenticated' && (
             <li>
               <FontAwesomeIcon
