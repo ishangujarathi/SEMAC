@@ -64,6 +64,138 @@ export class Gd extends Component {
     await this.setState({ file6: { name, file }, filename6: name });
   };
 
+  gdSubmit1 = async (e) => {
+    e.preventDefault();
+    // File 1
+    const formdata = new FormData();
+    formdata.append('upload_preset', 'semac007');
+    formdata.append(
+      'filename_override',
+      `grp-${this.state.groupNumber}-roll-${this.state.filename1}`
+    );
+    formdata.append('folder', 'gd');
+    formdata.append('file', this.state.file1.file);
+
+    await fetch(`https://api.cloudinary.com/v1_1/df6hie48w/raw/upload`, {
+      method: 'POST',
+      body: formdata,
+    })
+      .then((r) => r.json())
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  gdSubmit2 = async (e) => {
+    e.preventDefault();
+    // File 2
+    const formdata = new FormData();
+    formdata.append('upload_preset', 'semac007');
+    formdata.append(
+      'filename_override',
+      `grp-${this.state.groupNumber}-roll-${this.state.filename2}`
+    );
+    formdata.append('folder', 'gd');
+    formdata.append('file', this.state.file2.file);
+
+    await fetch(`https://api.cloudinary.com/v1_1/df6hie48w/raw/upload`, {
+      method: 'POST',
+      body: formdata,
+    })
+      .then((r) => r.json())
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  gdSubmit3 = async (e) => {
+    e.preventDefault();
+    // File 3
+    const formdata = new FormData();
+    formdata.append('upload_preset', 'semac007');
+    formdata.append(
+      'filename_override',
+      `grp-${this.state.groupNumber}-roll-${this.state.filename3}`
+    );
+    formdata.append('folder', 'gd');
+    formdata.append('file', this.state.file3.file);
+
+    await fetch(`https://api.cloudinary.com/v1_1/df6hie48w/raw/upload`, {
+      method: 'POST',
+      body: formdata,
+    })
+      .then((r) => r.json())
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  gdSubmit4 = async (e) => {
+    e.preventDefault();
+    // File 4
+    const formdata = new FormData();
+    formdata.append('upload_preset', 'semac007');
+    formdata.append(
+      'filename_override',
+      `grp-${this.state.groupNumber}-roll-${this.state.filename4}`
+    );
+    formdata.append('folder', 'gd');
+    formdata.append('file', this.state.file4.file);
+
+    await fetch(`https://api.cloudinary.com/v1_1/df6hie48w/raw/upload`, {
+      method: 'POST',
+      body: formdata,
+    })
+      .then((r) => r.json())
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  gdSubmit5 = async (e) => {
+    e.preventDefault();
+    // File 5
+    const formdata = new FormData();
+    formdata.append('upload_preset', 'semac007');
+    formdata.append(
+      'filename_override',
+      `grp-${this.state.groupNumber}-roll-${this.state.filename5}`
+    );
+    formdata.append('folder', 'gd');
+    formdata.append('file', this.state.file5.file);
+
+    await fetch(`https://api.cloudinary.com/v1_1/df6hie48w/raw/upload`, {
+      method: 'POST',
+      body: formdata,
+    })
+      .then((r) => r.json())
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  gdSubmit6 = async (e) => {
+    e.preventDefault();
+    // File 6
+    const formdata = new FormData();
+    formdata.append('upload_preset', 'semac007');
+    formdata.append(
+      'filename_override',
+      `grp-${this.state.groupNumber}-roll-${this.state.filename6}`
+    );
+    formdata.append('folder', 'gd');
+    formdata.append('file', this.state.file6.file);
+
+    await fetch(`https://api.cloudinary.com/v1_1/df6hie48w/raw/upload`, {
+      method: 'POST',
+      body: formdata,
+    })
+      .then((r) => r.json())
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   gdSubmitHandler = async (e) => {
     e.preventDefault();
 
@@ -135,6 +267,12 @@ export class Gd extends Component {
               }}
               className={styles.file}
             />
+            <input
+              className={styles.upload}
+              type="button"
+              value="UPLOAD"
+              onClick={this.gdSubmit1}
+            />
           </label>
           <label className={styles.label}>
             ROLL NO: {this.state.r2}
@@ -151,6 +289,12 @@ export class Gd extends Component {
                 e.target.setCustomValidity('');
               }}
               className={styles.file}
+            />{' '}
+            <input
+              className={styles.upload}
+              type="button"
+              value="UPLOAD"
+              onClick={this.gdSubmit2}
             />
           </label>
           <label className={styles.label}>
@@ -169,6 +313,12 @@ export class Gd extends Component {
               }}
               className={styles.file}
             />
+            <input
+              className={styles.upload}
+              type="button"
+              value="UPLOAD"
+              onClick={this.gdSubmit3}
+            />
           </label>
           <label className={styles.label}>
             ROLL NO: {this.state.r4}
@@ -186,6 +336,12 @@ export class Gd extends Component {
               }}
               className={styles.file}
             />
+            <input
+              className={styles.upload}
+              type="button"
+              value="UPLOAD"
+              onClick={this.gdSubmit4}
+            />
           </label>
           <label className={styles.label}>
             ROLL NO: {this.state.r5}
@@ -202,6 +358,12 @@ export class Gd extends Component {
                 e.target.setCustomValidity('');
               }}
               className={styles.file}
+            />{' '}
+            <input
+              className={styles.upload}
+              type="button"
+              value="UPLOAD"
+              onClick={this.gdSubmit5}
             />
           </label>
           <label className={styles.label}>
@@ -219,6 +381,12 @@ export class Gd extends Component {
                 e.target.setCustomValidity('');
               }}
               className={styles.file}
+            />
+            <input
+              className={styles.upload}
+              type="button"
+              value="UPLOAD"
+              onClick={this.gdSubmit6}
             />
           </label>
           <input type="submit" value="SUBMIT" className={styles.submit} />

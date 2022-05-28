@@ -1,15 +1,5 @@
 import { createGs, getGs } from '../../../prisma/gs';
 import nc from 'next-connect';
-import multer from 'multer';
-
-let group;
-
-const upload = multer({
-  storage: multer.diskStorage({
-    destination: './public/gs',
-    filename: (req, file, cb) => cb(null, 'grp-' + req.body.groupNumber + '-' + file.originalname),
-  }),
-});
 
 const handler = nc({
   onError: (err, req, res, next) => {
@@ -29,15 +19,9 @@ const handler = nc({
       return res.json(message);
     }
   })
-  .post(upload.single('file'), async (req, res) => {
+  .post(async (req, res) => {
     const gs = await createGs(req.body);
     return res.status(200).json({ message: 'GS File Uploaded Successfully', gs });
   });
 
 export default handler;
-
-export const config = {
-  api: {
-    bodyParser: false,
-  },
-};

@@ -1,13 +1,5 @@
 import { createHa, getHa } from '../../../prisma/ha';
 import nc from 'next-connect';
-import multer from 'multer';
-
-const upload = multer({
-  storage: multer.diskStorage({
-    destination: './public/ha',
-    filename: (req, file, cb) => cb(null, 'grp-' + req.body.groupNumber + '-' + file.originalname),
-  }),
-});
 
 const handler = nc({
   onError: (err, req, res, next) => {
@@ -27,15 +19,9 @@ const handler = nc({
       return res.json(message);
     }
   })
-  .post(upload.single('file'), async (req, res) => {
+  .post(async (req, res) => {
     const Ha = await createHa(req.body);
     return res.status(200).json({ message: 'HA File Uploaded Successfully', Ha });
   });
 
 export default handler;
-
-export const config = {
-  api: {
-    bodyParser: false,
-  },
-};

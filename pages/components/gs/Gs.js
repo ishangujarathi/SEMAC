@@ -21,7 +21,24 @@ export class Gs extends Component {
   gsSubmitHandler = async (e) => {
     e.preventDefault();
 
+    const formdata1 = new FormData();
+    formdata1.append('upload_preset', 'semac007');
+    formdata1.append('filename_override', `grp-${this.state.groupNumber}-${this.state.filename}`);
+    formdata1.append('folder', 'gs');
+    formdata1.append('file', this.state.file.file);
+
+    await fetch(`https://api.cloudinary.com/v1_1/df6hie48w/raw/upload`, {
+      method: 'POST',
+      body: formdata1,
+    })
+      .then((r) => r.json())
+      .catch((error) => {
+        console.log(error);
+      });
+
     const formdata = new FormData();
+
+    console.log(this.state.groupNumber);
 
     formdata.append('groupNumber', this.state.groupNumber);
     formdata.append('filename', this.state.filename);
@@ -45,8 +62,8 @@ export class Gs extends Component {
     return (
       <>
         <h1 className={styles.head}>UPLOAD YOUR CONTENT FOR GS</h1>
-        <form onSubmit={this.gsSubmitHandler} className={styles.mystyle}>
-          <label className={styles.label}>
+        <form onSubmit={this.gsSubmitHandler} className={(styles.mystyle, { width: '42vw' })}>
+          <label className={styles.label} style={{ fontSize: '1.5vw' }}>
             PLEASE SUBMIT YOUR GROUP PPT
             <input
               type="file"
@@ -62,8 +79,15 @@ export class Gs extends Component {
               }}
               className={styles.file}
             />
+            <input
+              className={styles.upload}
+              style={{ marginLeft: '-5vw' }}
+              type="button"
+              value="UPLOAD"
+              onClick={this.gdSubmit1}
+            />
           </label>
-          <input type="submit" value="SUBMIT" className={styles.submit} />
+          <input type="submit" value="SUBMIT" className={styles.gsubmit} />
         </form>
       </>
     );

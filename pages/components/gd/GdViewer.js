@@ -1,10 +1,49 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import useDownloader from 'react-use-downloader';
 import styles from '../../../styles/viewer.module.css';
+const environment = process.env.NODE_ENV;
 
-const GdViewer = (props) => {
-  const { groupNumber, roll } = props;
+const GdViewer = ({ groupNumber, roll }) => {
   const [r1, r2, r3, r4, r5, r6] = roll;
+
+  const [files, setFiles] = useState({
+    filename1: '',
+    filename2: '',
+    filename3: '',
+    filename4: '',
+    filename5: '',
+    filename6: '',
+  });
+
+  useEffect(() => {
+    const url =
+      environment === 'production' ? 'https://semac.vercel.app/api' : 'http://localhost:3000/api';
+
+    const fetchData = async () => {
+      const response = await fetch(`${url}/collab/gd/?groupNumber=${groupNumber}`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      const res = await response.json();
+      setFiles({
+        filename1: res.files[0].filename,
+        filename2: res.files[1].filename,
+        filename3: res.files[2].filename,
+        filename4: res.files[3].filename,
+        filename5: res.files[4].filename,
+        filename6: res.files[5].filename,
+      });
+    };
+
+    // call the function
+    fetchData()
+      // make sure to catch any error
+      .catch(console.error);
+  }, []);
+
+  const { filename1, filename2, filename3, filename4, filename5, filename6 } = files;
 
   const fileUrl1 = `../../../public/gd/${filename1}`,
     fileUrl2 = `../../../public/gd/${filename2}`,
@@ -29,34 +68,3 @@ const GdViewer = (props) => {
 };
 
 export default GdViewer;
-
-export async function getServerSideProps({ req }) {
-  // Fetch data from external API
-
-  const session = await getSession({ req });
-  const email = session?.user.email;
-
-  const url =
-    environment === 'production' ? 'https://semac.vercel.app/api' : `http://localhost:3000/api`;
-
-  const res = await fetch(`${url}/group/group/?email=${email}`, {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  });
-
-  const group = await res.json();
-
-  const response = await fetch(`${url}/collab/gd/?groupNumber=${groupNumber}`, {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  });
-
-  const gd = await response.json();
-
-  // Pass data to the page via props
-  return { props: { gd } };
-}

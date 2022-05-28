@@ -1,13 +1,5 @@
 import { createTt, getTt } from '../../../prisma/tt';
 import nc from 'next-connect';
-import multer from 'multer';
-
-const upload = multer({
-  storage: multer.diskStorage({
-    destination: './public/timetables',
-    filename: (req, file, cb) => cb(null, file.originalname),
-  }),
-});
 
 const handler = nc({
   onError: (err, req, res, next) => {
@@ -27,7 +19,7 @@ const handler = nc({
       return res.json(message);
     }
   })
-  .post(upload.array('file'), async (req, res) => {
+  .post(async (req, res) => {
     const tt = await createTt(req.body.division, req.body.filename);
     return res.status(200).json({ message: 'Timetable Updated Successfully', tt });
   });

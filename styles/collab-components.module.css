@@ -50,8 +50,23 @@
   transition: 0.6s all cubic-bezier(0.23, 1, 0.32, 1);
 }
 
+.gsubmit {
+  width: 30%;
+  padding: 0.2vw;
+  font-size: 1.7vw;
+  border-radius: 1vw;
+  border: none;
+  background-color: aqua;
+  position: relative;
+  left: -3%;
+  top: 20%;
+  transition: 0.6s all cubic-bezier(0.23, 1, 0.32, 1);
+}
+
 .submit:hover,
-.hasubmit:hover {
+.hasubmit:hover,
+.upload:hover,
+.gsubmit:hover {
   background-color: chocolate;
 }
 
@@ -65,5 +80,14 @@
   position: relative;
   left: -2%;
   top: 12%;
+  transition: 0.6s all cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.upload {
+  padding: 0.2vw;
+  font-size: 1.2vw;
+  border-radius: 0.5vw;
+  border: none;
+  background-color: aqua;
   transition: 0.6s all cubic-bezier(0.23, 1, 0.32, 1);
 }
