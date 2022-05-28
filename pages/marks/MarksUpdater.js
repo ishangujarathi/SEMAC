@@ -18,8 +18,7 @@ const MarksUpdater = (props) => {
 
   const clickHandler = async (e) => {
     e.preventDefault();
-
-    setState({ ...state, [e.target.name]: true, clicked: true });
+    setState({ [e.target.name]: true, clicked: true });
   };
 
   const { clicked, gd, gs, ha, edai } = state;

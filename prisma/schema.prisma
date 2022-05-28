@@ -102,5 +102,5 @@ model edai {
       id        String   @id @default(auto()) @map("_id") @db.ObjectId
       groupNumber String @unique
       filename String
-      reportLink String
+      repoLink String
 }

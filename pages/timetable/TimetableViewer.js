@@ -6,7 +6,7 @@ import styles from '../../styles/timetable-viewer.module.css';
 const TimetableViewer = ({ tt }) => {
   const filename = tt.image;
 
-  const pic = `/timetables/${filename}`;
+  const pic = `https://res.cloudinary.com/df6hie48w/raw/upload/timetable/${filename}`;
 
   return (
     <section className={styles.cont}>

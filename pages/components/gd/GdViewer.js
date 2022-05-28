@@ -45,12 +45,12 @@ const GdViewer = ({ groupNumber, roll }) => {
 
   const { filename1, filename2, filename3, filename4, filename5, filename6 } = files;
 
-  const fileUrl1 = `https://res.cloudinary.com/df6hie48w/raw/upload/gd/${filename1}`,
-    fileUrl2 = `.https://res.cloudinary.com/df6hie48w/raw/upload/gd/${filename2}`,
-    fileUrl3 = `https://res.cloudinary.com/df6hie48w/raw/upload/gd/${filename3}`,
-    fileUrl4 = `https://res.cloudinary.com/df6hie48w/raw/upload/gd/${filename4}`,
-    fileUrl5 = `https://res.cloudinary.com/df6hie48w/raw/upload/gd/${filename5}`,
-    fileUrl6 = `https://res.cloudinary.com/df6hie48w/raw/upload/gd/${filename6}`;
+  const fileUrl1 = `https://res.cloudinary.com/df6hie48w/raw/upload/gd/grp-${groupNumber}-roll-${filename1}`,
+    fileUrl2 = `https://res.cloudinary.com/df6hie48w/raw/upload/gd/grp-${groupNumber}-roll-${filename2}`,
+    fileUrl3 = `https://res.cloudinary.com/df6hie48w/raw/upload/gd/grp-${groupNumber}-roll-${filename3}`,
+    fileUrl4 = `https://res.cloudinary.com/df6hie48w/raw/upload/gd/grp-${groupNumber}-roll-${filename4}`,
+    fileUrl5 = `https://res.cloudinary.com/df6hie48w/raw/upload/gd/grp-${groupNumber}-roll-${filename5}`,
+    fileUrl6 = `https://res.cloudinary.com/df6hie48w/raw/upload/gd/grp-${groupNumber}-roll-${filename6}`;
 
   const { download } = useDownloader();
 

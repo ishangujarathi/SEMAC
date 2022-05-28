@@ -17,7 +17,7 @@ export const createEdai = async (body) => {
     data: {
       groupNumber: body.groupNumber,
       filename: body.filename,
-      reportLink: body.reportLink,
+      repoLink: body.reportLink,
     },
   });
 
