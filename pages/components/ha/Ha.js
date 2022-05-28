@@ -19,21 +19,38 @@ export class Ha extends Component {
     await this.setState({ file: { name, file }, filename: name });
   };
 
+  haSubmit = async (e) => {
+    e.preventDefault();
+
+    const formdata = new FormData();
+    formdata.append('upload_preset', 'semac007');
+    formdata.append('filename_override', `grp-${this.state.groupNumber}-${this.state.filename}`);
+    formdata.append('folder', 'ha');
+    formdata.append('file', this.state.file.file);
+
+    await fetch(`https://api.cloudinary.com/v1_1/df6hie48w/raw/upload`, {
+      method: 'POST',
+      body: formdata,
+    })
+      .then((r) => r.json())
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   haSubmitHandler = async (e) => {
     e.preventDefault();
-    console.log(this.state.groupNumber);
-    const formdata = new FormData();
 
-    formdata.append('groupNumber', this.state.groupNumber);
-    formdata.append('blogLink', this.state.blogLink);
-    formdata.append('filename', this.state.filename);
-    formdata.append('file', this.state.file.file);
-    
+    const body = {
+      groupNumber: this.state.groupNumber,
+      blogLink: this.state.blogLink,
+      filename: this.state.filename,
+    };
 
     await axios
-      .post('/api/collab/ha', formdata, {
+      .post('/api/collab/ha', body, {
         headers: {
-          'Content-Type': 'multipart/form-data',
+          'Content-Type': 'application/json',
         },
       })
       .then((response) => {
@@ -63,6 +80,13 @@ export class Ha extends Component {
                 e.target.setCustomValidity('');
               }}
               className={styles.file}
+            />
+            <input
+              className={styles.upload}
+              style={{ marginLeft: '-5vw' }}
+              type="button"
+              value="UPLOAD"
+              onClick={this.haSubmit}
             />
           </label>
           <br />

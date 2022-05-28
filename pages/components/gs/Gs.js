@@ -18,36 +18,34 @@ export class Gs extends Component {
     await this.setState({ file: { name, file }, filename: name });
   };
 
-  gsSubmitHandler = async (e) => {
+  gsSubmit = async (e) => {
     e.preventDefault();
 
-    const formdata1 = new FormData();
-    formdata1.append('upload_preset', 'semac007');
-    formdata1.append('filename_override', `grp-${this.state.groupNumber}-${this.state.filename}`);
-    formdata1.append('folder', 'gs');
-    formdata1.append('file', this.state.file.file);
+    const formdata = new FormData();
+    formdata.append('upload_preset', 'semac007');
+    formdata.append('filename_override', `grp-${this.state.groupNumber}-${this.state.filename}`);
+    formdata.append('folder', 'gs');
+    formdata.append('file', this.state.file.file);
 
     await fetch(`https://api.cloudinary.com/v1_1/df6hie48w/raw/upload`, {
       method: 'POST',
-      body: formdata1,
+      body: formdata,
     })
       .then((r) => r.json())
       .catch((error) => {
         console.log(error);
       });
+  };
 
-    const formdata = new FormData();
+  gsSubmitHandler = async (e) => {
+    e.preventDefault();
 
-    console.log(this.state.groupNumber);
-
-    formdata.append('groupNumber', this.state.groupNumber);
-    formdata.append('filename', this.state.filename);
-    formdata.append('file', this.state.file.file);
+    const body = { groupNumber: this.state.groupNumber, filename: this.state.filename };
 
     await axios
-      .post('/api/collab/gs', formdata, {
+      .post('/api/collab/gs', body, {
         headers: {
-          'Content-Type': 'multipart/form-data',
+          'Content-Type': 'application/json',
         },
       })
       .then((response) => {
@@ -84,7 +82,7 @@ export class Gs extends Component {
               style={{ marginLeft: '-5vw' }}
               type="button"
               value="UPLOAD"
-              onClick={this.gdSubmit1}
+              onClick={this.gsSubmit}
             />
           </label>
           <input type="submit" value="SUBMIT" className={styles.gsubmit} />

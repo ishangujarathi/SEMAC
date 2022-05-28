@@ -201,25 +201,21 @@ export class Gd extends Component {
 
     const formdata = new FormData();
 
-    formdata.append('r1', this.state.r1);
-    formdata.append('r2', this.state.r2);
-    formdata.append('r3', this.state.r3);
-    formdata.append('r4', this.state.r4);
-    formdata.append('r5', this.state.r5);
-    formdata.append('r6', this.state.r6);
-    formdata.append('groupNumber', this.state.groupNumber);
-    formdata.append('filename1', this.state.filename1);
-    formdata.append('filename2', this.state.filename2);
-    formdata.append('filename3', this.state.filename3);
-    formdata.append('filename4', this.state.filename4);
-    formdata.append('filename5', this.state.filename5);
-    formdata.append('filename6', this.state.filename6);
-    formdata.append('file1', this.state.file1.file);
-    formdata.append('file2', this.state.file2.file);
-    formdata.append('file3', this.state.file3.file);
-    formdata.append('file4', this.state.file4.file);
-    formdata.append('file5', this.state.file5.file);
-    formdata.append('file6', this.state.file6.file);
+    const body = {
+      r1: this.state.r1,
+      r2: this.state.r2,
+      r3: this.state.r3,
+      r4: this.state.r4,
+      r5: this.state.r5,
+      r6: this.state.r6,
+      filename1: this.state.filename1,
+      filename2: this.state.filename2,
+      filename3: this.state.filename3,
+      filename4: this.state.filename4,
+      filename5: this.state.filename5,
+      filename6: this.state.filename6,
+      groupNumber: this.state.groupNumber,
+    };
 
     if (
       this.state.filename1.includes(this.state.r1) &&
@@ -230,9 +226,9 @@ export class Gd extends Component {
       this.state.filename6.includes(this.state.r6)
     ) {
       await axios
-        .post('/api/collab/gd', formdata, {
+        .post('/api/collab/gd', body, {
           headers: {
-            'Content-Type': 'multipart/form-data',
+            'Content-Type': 'application/json',
           },
         })
         .then((response) => {

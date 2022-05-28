@@ -14,6 +14,7 @@
   justify-content: center;
   position: relative;
   left: 1.2%;
+  gap: 0.2vw;
 }
 
 .hastyle > * > input[type='text'] {

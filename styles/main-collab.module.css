@@ -36,6 +36,11 @@
   text-align: center;
 }
 
+.cont nav ul {
+  display: flex;
+  gap: 2vw;
+}
+
 .cont nav ul li {
   display: inline;
   margin: 0.063vw;

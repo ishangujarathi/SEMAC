@@ -19,20 +19,38 @@ export class Edip extends Component {
     await this.setState({ file: { name, file }, filename: name });
   };
 
-  ediSubmitHandler = async (e) => {
+  edaiSubmit = async (e) => {
     e.preventDefault();
-    console.log(this.state.groupNumber);
-    const formdata = new FormData();
 
-    formdata.append('groupNumber', this.state.groupNumber);
-    formdata.append('reportLink', this.state.reportLink);
-    formdata.append('filename', this.state.filename);
+    const formdata = new FormData();
+    formdata.append('upload_preset', 'semac007');
+    formdata.append('filename_override', `grp-${this.state.groupNumber}-${this.state.filename}`);
+    formdata.append('folder', 'edai');
     formdata.append('file', this.state.file.file);
 
+    await fetch(`https://api.cloudinary.com/v1_1/df6hie48w/raw/upload`, {
+      method: 'POST',
+      body: formdata,
+    })
+      .then((r) => r.json())
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  ediSubmitHandler = async (e) => {
+    e.preventDefault();
+
+    const body = {
+      groupNumber: this.state.groupNumber,
+      reportLink: this.state.reportLink,
+      filename: this.state.filename,
+    };
+
     await axios
-      .post('/api/collab/edai', formdata, {
+      .post('/api/collab/edai', body, {
         headers: {
-          'Content-Type': 'multipart/form-data',
+          'Content-Type': 'application/json',
         },
       })
       .then((response) => {
@@ -65,6 +83,13 @@ export class Edip extends Component {
                 e.target.setCustomValidity('');
               }}
               className={styles.file}
+            />{' '}
+            <input
+              className={styles.upload}
+              style={{ marginLeft: '-4vw' }}
+              type="button"
+              value="UPLOAD"
+              onClick={this.edaiSubmit}
             />
           </label>
           <input type="submit" value="SUBMIT" className={styles.hasubmit} />

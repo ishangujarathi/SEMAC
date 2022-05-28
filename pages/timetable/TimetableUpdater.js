@@ -22,18 +22,34 @@ export class TimetableUpdater extends Component {
     await this.setState({ timetable: { name, file }, filename: name });
   };
 
-  onSubmit = async (e) => {
+  ttSubmit = async (e) => {
     e.preventDefault();
 
     const formdata = new FormData();
+    formdata.append('upload_preset', 'semac007');
+    formdata.append('filename_override', `${this.state.filename}`);
+    formdata.append('folder', 'timetable');
     formdata.append('file', this.state.timetable.file);
-    formdata.append('division', this.state.division);
-    formdata.append('filename', this.state.filename);
+
+    await fetch(`https://api.cloudinary.com/v1_1/df6hie48w/raw/upload`, {
+      method: 'POST',
+      body: formdata,
+    })
+      .then((r) => r.json())
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  onSubmit = async (e) => {
+    e.preventDefault();
+
+    const body = { division: this.state.division, filename: this.state.filename };
 
     await axios
-      .post('/api/timetable/timetable', formdata, {
+      .post('/api/timetable/timetable', body, {
         headers: {
-          'Content-Type': 'multipart/form-data',
+          'Content-Type': 'application/json',
         },
       })
       .then((response) => {
@@ -65,6 +81,13 @@ export class TimetableUpdater extends Component {
             onInput={(e) => {
               e.target.setCustomValidity('');
             }}
+          />
+          <input
+            className={styles.upload}
+            style={{ marginLeft: '-4vw' }}
+            type="button"
+            value="UPLOAD"
+            onClick={this.ttSubmit}
           />
           <input type="submit" value="SUBMIT" />
         </form>
