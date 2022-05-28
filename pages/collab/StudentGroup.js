@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 import { useSession } from 'next-auth/react';
-import styles from '../styles/student-group.module.css';
+import styles from '../../styles/student-group.module.css';
 import { getSession } from 'next-auth/react';
 
 const StudentGroup = ({ email }) => {

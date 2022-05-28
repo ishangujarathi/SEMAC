@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import TableComponent from './components/TableComponent';
+import TableComponent from '../components/TableComponent';
 
 const Marks = () => {
   let marks;
