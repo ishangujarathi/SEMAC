@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/router';
-import { useSession } from 'next-auth/react';
 import styles from '../../styles/student-group.module.css';
 import { getSession } from 'next-auth/react';
 
-const StudentGroup = ({ email }) => {
-  const { data: session, status } = useSession();
+const StudentGroup = ({ email, user }) => {
   const router = useRouter();
 
   const [formContent, setFormContent] = useState({
@@ -42,7 +40,9 @@ const StudentGroup = ({ email }) => {
     }
   };
 
-  if (status === 'authenticated') {
+  const role = user.role;
+
+  if (role && role === 'Student') {
     return (
       <section className={styles.cont}>
         <form onSubmit={(e) => onSubmit(e)}>
@@ -156,6 +156,15 @@ export async function getServerSideProps({ req }) {
   const session = await getSession({ req });
   const email = session?.user.email;
 
+  const resp = await fetch(`${url}/auth/user/?email=${email}`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+
+  const user = await resp.json();
+
   // Pass data to the page via props
-  return { props: { email } };
+  return { props: { email, user } };
 }

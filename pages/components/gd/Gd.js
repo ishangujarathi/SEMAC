@@ -4,6 +4,10 @@ import axios from 'axios';
 import styles from '../../../styles/collab-components.module.css';
 
 export class Gd extends Component {
+  constructor(props) {
+    super(props);
+  }
+
   state = {
     file1: {},
     file2: {},
@@ -243,152 +247,157 @@ export class Gd extends Component {
   };
 
   render() {
-    return (
-      <>
-        <h1 className={styles.head}>UPLOAD YOUR CONTENT FOR GD</h1>
-        <form onSubmit={this.gdSubmitHandler} className={styles.mystyle}>
-          <label className={styles.label}>
-            ROLL NO: {this.state.r1}
-            <input
-              type="file"
-              accept=".pdf"
-              required
-              name="file1"
-              onChange={this.handleImageChange1}
-              onInvalid={(e) => {
-                e.target.setCustomValidity('Image formats allowed: .pdf');
-              }}
-              onInput={(e) => {
-                e.target.setCustomValidity('');
-              }}
-              className={styles.file}
-            />
-            <input
-              className={styles.upload}
-              type="button"
-              value="UPLOAD"
-              onClick={this.gdSubmit1}
-            />
-          </label>
-          <label className={styles.label}>
-            ROLL NO: {this.state.r2}
-            <input
-              type="file"
-              accept=".pdf"
-              required
-              name="file2"
-              onChange={this.handleImageChange2}
-              onInvalid={(e) => {
-                e.target.setCustomValidity('Image formats allowed: .pdf');
-              }}
-              onInput={(e) => {
-                e.target.setCustomValidity('');
-              }}
-              className={styles.file}
-            />{' '}
-            <input
-              className={styles.upload}
-              type="button"
-              value="UPLOAD"
-              onClick={this.gdSubmit2}
-            />
-          </label>
-          <label className={styles.label}>
-            ROLL NO: {this.state.r3}
-            <input
-              type="file"
-              accept=".pdf"
-              required
-              name="file3"
-              onChange={this.handleImageChange3}
-              onInvalid={(e) => {
-                e.target.setCustomValidity('Image formats allowed: .pdf');
-              }}
-              onInput={(e) => {
-                e.target.setCustomValidity('');
-              }}
-              className={styles.file}
-            />
-            <input
-              className={styles.upload}
-              type="button"
-              value="UPLOAD"
-              onClick={this.gdSubmit3}
-            />
-          </label>
-          <label className={styles.label}>
-            ROLL NO: {this.state.r4}
-            <input
-              type="file"
-              accept=".pdf"
-              required
-              name="file4"
-              onChange={this.handleImageChange4}
-              onInvalid={(e) => {
-                e.target.setCustomValidity('Image formats allowed: .pdf');
-              }}
-              onInput={(e) => {
-                e.target.setCustomValidity('');
-              }}
-              className={styles.file}
-            />
-            <input
-              className={styles.upload}
-              type="button"
-              value="UPLOAD"
-              onClick={this.gdSubmit4}
-            />
-          </label>
-          <label className={styles.label}>
-            ROLL NO: {this.state.r5}
-            <input
-              type="file"
-              accept=".pdf"
-              required
-              name="file5"
-              onChange={this.handleImageChange5}
-              onInvalid={(e) => {
-                e.target.setCustomValidity('Image formats allowed: .pdf');
-              }}
-              onInput={(e) => {
-                e.target.setCustomValidity('');
-              }}
-              className={styles.file}
-            />{' '}
-            <input
-              className={styles.upload}
-              type="button"
-              value="UPLOAD"
-              onClick={this.gdSubmit5}
-            />
-          </label>
-          <label className={styles.label}>
-            ROLL NO: {this.state.r6}
-            <input
-              type="file"
-              accept=".pdf"
-              required
-              name="file6"
-              onChange={this.handleImageChange6}
-              onInvalid={(e) => {
-                e.target.setCustomValidity('Image formats allowed: .pdf');
-              }}
-              onInput={(e) => {
-                e.target.setCustomValidity('');
-              }}
-              className={styles.file}
-            />
-            <input
-              className={styles.upload}
-              type="button"
-              value="UPLOAD"
-              onClick={this.gdSubmit6}
-            />
-          </label>
-          <input type="submit" value="SUBMIT" className={styles.submit} />
-        </form>
-      </>
-    );
+    const role = this.props.role;
+
+    if (role && role === 'Student') {
+      return (
+        <>
+          <h1 className={styles.head}>UPLOAD YOUR CONTENT FOR GD</h1>
+          <form onSubmit={this.gdSubmitHandler} className={styles.mystyle}>
+            <label className={styles.label}>
+              ROLL NO: {this.state.r1}
+              <input
+                type="file"
+                accept=".pdf"
+                required
+                name="file1"
+                onChange={this.handleImageChange1}
+                onInvalid={(e) => {
+                  e.target.setCustomValidity('Image formats allowed: .pdf');
+                }}
+                onInput={(e) => {
+                  e.target.setCustomValidity('');
+                }}
+                className={styles.file}
+              />
+              <input
+                className={styles.upload}
+                type="button"
+                value="UPLOAD"
+                onClick={this.gdSubmit1}
+              />
+            </label>
+            <label className={styles.label}>
+              ROLL NO: {this.state.r2}
+              <input
+                type="file"
+                accept=".pdf"
+                required
+                name="file2"
+                onChange={this.handleImageChange2}
+                onInvalid={(e) => {
+                  e.target.setCustomValidity('Image formats allowed: .pdf');
+                }}
+                onInput={(e) => {
+                  e.target.setCustomValidity('');
+                }}
+                className={styles.file}
+              />{' '}
+              <input
+                className={styles.upload}
+                type="button"
+                value="UPLOAD"
+                onClick={this.gdSubmit2}
+              />
+            </label>
+            <label className={styles.label}>
+              ROLL NO: {this.state.r3}
+              <input
+                type="file"
+                accept=".pdf"
+                required
+                name="file3"
+                onChange={this.handleImageChange3}
+                onInvalid={(e) => {
+                  e.target.setCustomValidity('Image formats allowed: .pdf');
+                }}
+                onInput={(e) => {
+                  e.target.setCustomValidity('');
+                }}
+                className={styles.file}
+              />
+              <input
+                className={styles.upload}
+                type="button"
+                value="UPLOAD"
+                onClick={this.gdSubmit3}
+              />
+            </label>
+            <label className={styles.label}>
+              ROLL NO: {this.state.r4}
+              <input
+                type="file"
+                accept=".pdf"
+                required
+                name="file4"
+                onChange={this.handleImageChange4}
+                onInvalid={(e) => {
+                  e.target.setCustomValidity('Image formats allowed: .pdf');
+                }}
+                onInput={(e) => {
+                  e.target.setCustomValidity('');
+                }}
+                className={styles.file}
+              />
+              <input
+                className={styles.upload}
+                type="button"
+                value="UPLOAD"
+                onClick={this.gdSubmit4}
+              />
+            </label>
+            <label className={styles.label}>
+              ROLL NO: {this.state.r5}
+              <input
+                type="file"
+                accept=".pdf"
+                required
+                name="file5"
+                onChange={this.handleImageChange5}
+                onInvalid={(e) => {
+                  e.target.setCustomValidity('Image formats allowed: .pdf');
+                }}
+                onInput={(e) => {
+                  e.target.setCustomValidity('');
+                }}
+                className={styles.file}
+              />{' '}
+              <input
+                className={styles.upload}
+                type="button"
+                value="UPLOAD"
+                onClick={this.gdSubmit5}
+              />
+            </label>
+            <label className={styles.label}>
+              ROLL NO: {this.state.r6}
+              <input
+                type="file"
+                accept=".pdf"
+                required
+                name="file6"
+                onChange={this.handleImageChange6}
+                onInvalid={(e) => {
+                  e.target.setCustomValidity('Image formats allowed: .pdf');
+                }}
+                onInput={(e) => {
+                  e.target.setCustomValidity('');
+                }}
+                className={styles.file}
+              />
+              <input
+                className={styles.upload}
+                type="button"
+                value="UPLOAD"
+                onClick={this.gdSubmit6}
+              />
+            </label>
+            <input type="submit" value="SUBMIT" className={styles.submit} />
+          </form>
+        </>
+      );
+    }
+    return <a href="/api/auth/signin">SIGN IN</a>;
   }
 }
 

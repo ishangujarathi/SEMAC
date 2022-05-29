@@ -57,50 +57,53 @@ const data1 = {
   ],
 };
 
-function StudentHome() {
-  return (
-    <div className={styles.contentcontainer}>
-      <section>
-        <div className={styles.contentwrapper}>
-          <div className={styles.tabs}>
-            <div className={styles.categories}>
-              <a href="/timetable/Timetable">
-                <h2>TIMETABLE</h2>
-              </a>
+function StudentHome({ role }) {
+  if (role && role === 'Student') {
+    return (
+      <div className={styles.contentcontainer}>
+        <section>
+          <div className={styles.contentwrapper}>
+            <div className={styles.tabs}>
+              <div className={styles.categories}>
+                <a href="/timetable/Timetable">
+                  <h2>TIMETABLE</h2>
+                </a>
+              </div>
+            </div>
+            <div className={styles.tabs}>
+              <div className={styles.categories}>
+                <h2>Attendance</h2>
+              </div>
+            </div>
+            <div className={styles.tabs}>
+              <div className={styles.categories}>
+                <a href="/collab/Collab">
+                  <h2>ACADEMICS</h2>
+                </a>
+              </div>
+            </div>
+            <div className={styles.tabs}>
+              <div className={styles.categories}>
+                <h2>PERFORMANCE</h2>
+              </div>
             </div>
           </div>
-          <div className={styles.tabs}>
-            <div className={styles.categories}>
-              <h2>Attendance</h2>
+          {/* chart started  */}
+          <div className={styles.charts}>
+            <div className={styles.bar}>
+              <h2>Sales</h2>
+              <Line data={data} className={styles.line} />
+            </div>
+            <div className={styles.circle}>
+              <h2>Customers Arrived</h2>
+              <Doughnut data={data1} className={styles.nut} />
             </div>
           </div>
-          <div className={styles.tabs}>
-            <div className={styles.categories}>
-              <a href="/collab/Collab">
-                <h2>ACADEMICS</h2>
-              </a>
-            </div>
-          </div>
-          <div className={styles.tabs}>
-            <div className={styles.categories}>
-              <h2>PERFORMANCE</h2>
-            </div>
-          </div>
-        </div>
-        {/* chart started  */}
-        <div className={styles.charts}>
-          <div className={styles.bar}>
-            <h2>Sales</h2>
-            <Line data={data} className={styles.line} />
-          </div>
-          <div className={styles.circle}>
-            <h2>Customers Arrived</h2>
-            <Doughnut data={data1} className={styles.nut} />
-          </div>
-        </div>
-      </section>
-    </div>
-  );
+        </section>
+      </div>
+    );
+  }
+  return <a href="/api/auth/signin">SIGN IN</a>;
 }
 
 export default StudentHome;

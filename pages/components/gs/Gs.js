@@ -4,6 +4,10 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 
 export class Gs extends Component {
+  constructor(props) {
+    super(props);
+  }
+
   state = {
     file: {},
     filename: '',
@@ -57,38 +61,43 @@ export class Gs extends Component {
   };
 
   render() {
-    return (
-      <>
-        <h1 className={styles.head}>UPLOAD YOUR CONTENT FOR GS</h1>
-        <form onSubmit={this.gsSubmitHandler} className={(styles.mystyle, { width: '42vw' })}>
-          <label className={styles.label} style={{ fontSize: '1.5vw' }}>
-            PLEASE SUBMIT YOUR GROUP PPT
-            <input
-              type="file"
-              accept=".pptx"
-              required
-              name="file"
-              onChange={this.handleImageChange}
-              onInvalid={(e) => {
-                e.target.setCustomValidity('Image formats allowed: .pptx');
-              }}
-              onInput={(e) => {
-                e.target.setCustomValidity('');
-              }}
-              className={styles.file}
-            />
-            <input
-              className={styles.upload}
-              style={{ marginLeft: '-5vw' }}
-              type="button"
-              value="UPLOAD"
-              onClick={this.gsSubmit}
-            />
-          </label>
-          <input type="submit" value="SUBMIT" className={styles.gsubmit} />
-        </form>
-      </>
-    );
+    const role = this.props.role;
+
+    if (role && role === 'Student') {
+      return (
+        <>
+          <h1 className={styles.head}>UPLOAD YOUR CONTENT FOR GS</h1>
+          <form onSubmit={this.gsSubmitHandler} className={(styles.mystyle, { width: '42vw' })}>
+            <label className={styles.label} style={{ fontSize: '1.5vw' }}>
+              PLEASE SUBMIT YOUR GROUP PPT
+              <input
+                type="file"
+                accept=".pptx"
+                required
+                name="file"
+                onChange={this.handleImageChange}
+                onInvalid={(e) => {
+                  e.target.setCustomValidity('Image formats allowed: .pptx');
+                }}
+                onInput={(e) => {
+                  e.target.setCustomValidity('');
+                }}
+                className={styles.file}
+              />
+              <input
+                className={styles.upload}
+                style={{ marginLeft: '-5vw' }}
+                type="button"
+                value="UPLOAD"
+                onClick={this.gsSubmit}
+              />
+            </label>
+            <input type="submit" value="SUBMIT" className={styles.gsubmit} />
+          </form>
+        </>
+      );
+    }
+    return <a href="/api/auth/signin">SIGN IN</a>;
   }
 }
 

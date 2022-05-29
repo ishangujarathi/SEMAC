@@ -4,6 +4,10 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 
 export class Edip extends Component {
+  constructor(props) {
+    super(props);
+  }
+
   state = {
     file: {},
     filename: '',
@@ -61,41 +65,46 @@ export class Edip extends Component {
       });
   };
   render() {
-    return (
-      <>
-        <h1 className={styles.head}>UPLOAD YOUR CONTENT FOR EDAI</h1>
-        <form onSubmit={this.ediSubmitHandler} className={styles.hastyle}>
-          <label className={styles.label}>
-            ENTER REPO LINK OF YOUR PROJECT:
-            <input type="text" name="reportLink" onChange={this.handleChange} />
-          </label>
-          <label className={styles.label}>
-            UPLOAD PROJECT REPORT:
-            <input
-              type="file"
-              accept=".pdf"
-              name="file"
-              onChange={this.handleImageChange}
-              onInvalid={(e) => {
-                e.target.setCustomValidity('Image formats allowed: .pdf');
-              }}
-              onInput={(e) => {
-                e.target.setCustomValidity('');
-              }}
-              className={styles.file}
-            />{' '}
-            <input
-              className={styles.upload}
-              style={{ marginLeft: '-4vw' }}
-              type="button"
-              value="UPLOAD"
-              onClick={this.edaiSubmit}
-            />
-          </label>
-          <input type="submit" value="SUBMIT" className={styles.hasubmit} />
-        </form>
-      </>
-    );
+    const role = this.props.role;
+
+    if (role && role === 'Student') {
+      return (
+        <>
+          <h1 className={styles.head}>UPLOAD YOUR CONTENT FOR EDAI</h1>
+          <form onSubmit={this.ediSubmitHandler} className={styles.hastyle}>
+            <label className={styles.label}>
+              ENTER REPO LINK OF YOUR PROJECT:
+              <input type="text" name="reportLink" onChange={this.handleChange} />
+            </label>
+            <label className={styles.label}>
+              UPLOAD PROJECT REPORT:
+              <input
+                type="file"
+                accept=".pdf"
+                name="file"
+                onChange={this.handleImageChange}
+                onInvalid={(e) => {
+                  e.target.setCustomValidity('Image formats allowed: .pdf');
+                }}
+                onInput={(e) => {
+                  e.target.setCustomValidity('');
+                }}
+                className={styles.file}
+              />{' '}
+              <input
+                className={styles.upload}
+                style={{ marginLeft: '-4vw' }}
+                type="button"
+                value="UPLOAD"
+                onClick={this.edaiSubmit}
+              />
+            </label>
+            <input type="submit" value="SUBMIT" className={styles.hasubmit} />
+          </form>
+        </>
+      );
+    }
+    return <a href="/api/auth/signin">SIGN IN</a>;
   }
 }
 

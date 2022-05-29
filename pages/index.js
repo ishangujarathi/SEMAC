@@ -10,8 +10,8 @@ export default function Home({ user }) {
   return (
     <div className={styles.container}>
       {!user && <Plogin />}
-      {user && role === 'Student' && <StudentHome />}
-      {user && role === 'Teacher' && <TeacherHome />}
+      {user && role === 'Student' && <StudentHome role={role} />}
+      {user && role === 'Teacher' && <TeacherHome role={role} />}
     </div>
   );
 }
