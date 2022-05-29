@@ -22,3 +22,17 @@ export const createGs = async (body) => {
 
   return gs;
 };
+
+// UPDATE
+export const updateGs = async (body) => {
+  const gs = await prisma.gs.update({
+    where: {
+      groupNumber: body.groupNumber,
+    },
+    data: {
+      marks: body.marks,
+    },
+  });
+
+  return gs;
+};

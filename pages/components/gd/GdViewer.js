@@ -6,6 +6,8 @@ const environment = process.env.NODE_ENV;
 const GdViewer = ({ groupNumber, roll }) => {
   const [r1, r2, r3, r4, r5, r6] = roll;
 
+  const [mark, setMark] = useState('');
+
   const [files, setFiles] = useState({
     filename1: '',
     filename2: '',
@@ -14,6 +16,17 @@ const GdViewer = ({ groupNumber, roll }) => {
     filename5: '',
     filename6: '',
   });
+
+  const markHandler = async (e) => {
+    e.preventDefault();
+    setMark({ [e.target.name]: e.target.value });
+  };
+
+  const submitHandler = async (e) => {
+    e.preventDefault();
+
+    const body = {mark1marks.mr1, }
+  };
 
   useEffect(() => {
     const url =
@@ -57,12 +70,16 @@ const GdViewer = ({ groupNumber, roll }) => {
   return (
     <section className={styles.cont}>
       <h1>PLEASE CLICK ON ANY OF THE BUTTONS TO DOWNLOAD GD CONTENTS BY STUDENTS</h1>
-      <button onClick={() => download(fileUrl1, filename1)}>Roll No: {r1}</button>
-      <button onClick={() => download(fileUrl2, filename2)}>Roll No: {r2}</button>
-      <button onClick={() => download(fileUrl3, filename3)}>Roll No: {r3}</button>
-      <button onClick={() => download(fileUrl4, filename4)}>Roll No: {r4}</button>
-      <button onClick={() => download(fileUrl5, filename5)}>Roll No: {r5}</button>
-      <button onClick={() => download(fileUrl6, filename6)}>Roll No: {r6}</button>
+      <form onSubmit={submitHandler}>
+          <button onClick={() => download(fileUrl1, filename1)}>Roll No: {r1}</button> 
+          <button onClick={() => download(fileUrl2, filename2)}>Roll No: {r2}</button>  
+          <button onClick={() => download(fileUrl3, filename3)}>Roll No: {r3}</button>
+          <button onClick={() => download(fileUrl4, filename4)}>Roll No: {r4}</button>
+          <button onClick={() => download(fileUrl5, filename5)}>Roll No: {r5}</button> 
+          <button onClick={() => download(fileUrl6, filename6)}>Roll No: {r6}</button>
+        <input type="text" name="mark" onChange={markHandler} />
+        <input type="submit" value="UPDATE MARKS" />
+      </form>
     </section>
   );
 };

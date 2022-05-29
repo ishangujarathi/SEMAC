@@ -78,6 +78,7 @@ model gd {
       id        String   @id @default(auto()) @map("_id") @db.ObjectId
       groupNumber String @unique
       files File[]
+      marks String? @default("0")
 }
 
 type File {
@@ -89,6 +90,7 @@ model gs {
       id        String   @id @default(auto()) @map("_id") @db.ObjectId
       groupNumber String @unique
       filename String
+      marks String? @default("0")
 }
 
 model ha {
@@ -96,6 +98,7 @@ model ha {
       groupNumber String @unique
       filename String?
       blogLink String?
+      marks String? @default("0")
 }
 
 model edai {
@@ -103,4 +106,5 @@ model edai {
       groupNumber String @unique
       filename String
       repoLink String
+      marks String? @default("0")
 }

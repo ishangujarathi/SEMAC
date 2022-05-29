@@ -1,4 +1,5 @@
-.cont {
+.cont,
+.cont form {
   align-items: center;
   background-position: center;
   background-repeat: no-repeat;
@@ -14,6 +15,21 @@
   gap: 1vw;
 }
 
+.cont > * > span {
+  margin-left: 13%;
+}
+
+.cont > * > span > input {
+  font-weight: 600;
+  text-align: center;
+  padding: 0.4vw;
+  font-size: 1.5vw;
+  margin-left: 2vw;
+  border: none;
+  border-radius: 0.5vw;
+  max-width: 20%;
+}
+
 .cont h1 {
   font-size: 2vw;
   text-align: center;
@@ -21,16 +37,19 @@
   font-family: 'Montserrat', sans-serif;
 }
 
-.cont button {
+.cont button,
+.cont input[type='submit'] {
   background-color: #0ff;
   border: none;
   border-radius: 0.8vw;
   padding: 1vw;
+  font-family: 'Montserrat', sans-serif;
   transition: 0.8s all cubic-bezier(0.23, 1, 0.32, 1);
   will-change: background-color;
   font-size: 1.5vw;
 }
 
-.cont button:hover {
+.cont button:hover,
+.cont input[type='submit']:hover {
   background-color: #00c6c6;
 }
