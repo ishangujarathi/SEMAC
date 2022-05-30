@@ -30,7 +30,6 @@ const EdaiViewer = (props) => {
       const res = await response.json();
       setFilename(res.filename);
       setRepo(res.repoLink);
-      console.log(res);
     };
 
     // call the function
@@ -43,8 +42,6 @@ const EdaiViewer = (props) => {
     /\s/g,
     '_'
   )}`;
-
-  console.log(repo);
 
   return (
     <section className={styles.cont}>

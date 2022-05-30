@@ -1,4 +1,4 @@
-import { createGd, getGd } from '../../../prisma/gd';
+import { createGd, getGd, updateGd } from '../../../prisma/gd';
 
 async function handle(req, res) {
   try {
@@ -15,6 +15,15 @@ async function handle(req, res) {
       case 'POST': {
         const gd = await createGd(req.body);
         return res.status(200).json({ message: 'GD Files Uploaded Successfully', gd });
+      }
+      case 'PUT': {
+        const marks = await updateGd(req.body)
+          .then((response) => {
+            return res.status(200).json(response);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
       }
       default:
         break;

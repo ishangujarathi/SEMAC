@@ -60,8 +60,6 @@ export async function getServerSideProps({ req }) {
   });
 
   const groups = await res.json();
-  
-  console.log(groups)
 
   const resp = await fetch(`${url}/auth/user/?email=${email}`, {
     method: 'GET',

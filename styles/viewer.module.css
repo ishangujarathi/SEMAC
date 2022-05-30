@@ -15,16 +15,11 @@
   gap: 1vw;
 }
 
-.cont > * > span {
-  margin-left: 13%;
-}
-
-.cont > * > span > input {
+.cont > * > input {
   font-weight: 600;
   text-align: center;
   padding: 0.4vw;
   font-size: 1.5vw;
-  margin-left: 2vw;
   border: none;
   border-radius: 0.5vw;
   max-width: 20%;
@@ -37,7 +32,7 @@
   font-family: 'Montserrat', sans-serif;
 }
 
-.cont button,
+.cont a,
 .cont input[type='submit'] {
   background-color: #0ff;
   border: none;
@@ -49,7 +44,7 @@
   font-size: 1.5vw;
 }
 
-.cont button:hover,
+.cont a:hover,
 .cont input[type='submit']:hover {
   background-color: #00c6c6;
 }

@@ -23,15 +23,17 @@ const GdViewer = ({ groupNumber, roll }) => {
   const submitHandler = async (e) => {
     e.preventDefault();
 
-    const body = {groupNumber, mark}
-    
-    await fetch(`/api/collab/gd`, {
-    method: 'PUT',
-     body: body,
-  headers: {
-    'Content-type': 'application/json; charset=UTF-8',
-  },
-    })
+    const body = { groupNumber, mark };
+
+    const res = await fetch(`/api/collab/gd`, {
+      method: 'PUT',
+      body: JSON.stringify(body),
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+    });
+
+    console.log(await res.json());
   };
 
   useEffect(() => {
@@ -71,18 +73,16 @@ const GdViewer = ({ groupNumber, roll }) => {
     fileUrl5 = `https://res.cloudinary.com/df6hie48w/raw/upload/gd/fl_attachment/grp-${groupNumber}-roll-${filename5}`,
     fileUrl6 = `https://res.cloudinary.com/df6hie48w/raw/upload/gd/fl_attachment/grp-${groupNumber}-roll-${filename6}`;
 
-
-
   return (
     <section className={styles.cont}>
       <h1>PLEASE CLICK ON ANY OF THE BUTTONS TO DOWNLOAD GD CONTENTS BY STUDENTS</h1>
       <form onSubmit={submitHandler}>
-          <a href={fileUrl1}>Roll No: {r1}</a> 
-          <button onClick={() => download(fileUrl2, filename2)}>Roll No: {r2}</button>  
-          <button onClick={() => download(fileUrl3, filename3)}>Roll No: {r3}</button>
-          <button onClick={() => download(fileUrl4, filename4)}>Roll No: {r4}</button>
-          <button onClick={() => download(fileUrl5, filename5)}>Roll No: {r5}</button> 
-          <button onClick={() => download(fileUrl6, filename6)}>Roll No: {r6}</button>
+        <a href={fileUrl1}>Roll No: {r1}</a>
+        <a href={fileUrl2}>Roll No: {r2}</a>
+        <a href={fileUrl3}>Roll No: {r3}</a>
+        <a href={fileUrl4}>Roll No: {r4}</a>
+        <a href={fileUrl5}>Roll No: {r5}</a>
+        <a href={fileUrl6}>Roll No: {r6}</a>
         <input type="text" name="mark" onChange={markHandler} />
         <input type="submit" value="UPDATE MARKS" />
       </form>
