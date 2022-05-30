@@ -1,11 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import useDownloader from 'react-use-downloader';
+import { useState, useEffect } from 'react';
 import styles from '../../../styles/viewer.module.css';
 const environment = process.env.NODE_ENV;
 
 const GdViewer = ({ groupNumber, roll }) => {
   const [r1, r2, r3, r4, r5, r6] = roll;
-
   const [mark, setMark] = useState('');
 
   const [files, setFiles] = useState({
@@ -25,7 +23,15 @@ const GdViewer = ({ groupNumber, roll }) => {
   const submitHandler = async (e) => {
     e.preventDefault();
 
-    const body = {mark1marks.mr1, }
+    const body = {groupNumber, mark}
+    
+    await fetch(`/api/collab/gd`, {
+    method: 'PUT',
+     body: body,
+  headers: {
+    'Content-type': 'application/json; charset=UTF-8',
+  },
+    })
   };
 
   useEffect(() => {
@@ -58,20 +64,20 @@ const GdViewer = ({ groupNumber, roll }) => {
 
   const { filename1, filename2, filename3, filename4, filename5, filename6 } = files;
 
-  const fileUrl1 = `https://res.cloudinary.com/df6hie48w/raw/upload/gd/grp-${groupNumber}-roll-${filename1}`,
-    fileUrl2 = `https://res.cloudinary.com/df6hie48w/raw/upload/gd/grp-${groupNumber}-roll-${filename2}`,
-    fileUrl3 = `https://res.cloudinary.com/df6hie48w/raw/upload/gd/grp-${groupNumber}-roll-${filename3}`,
-    fileUrl4 = `https://res.cloudinary.com/df6hie48w/raw/upload/gd/grp-${groupNumber}-roll-${filename4}`,
-    fileUrl5 = `https://res.cloudinary.com/df6hie48w/raw/upload/gd/grp-${groupNumber}-roll-${filename5}`,
-    fileUrl6 = `https://res.cloudinary.com/df6hie48w/raw/upload/gd/grp-${groupNumber}-roll-${filename6}`;
+  const fileUrl1 = `https://res.cloudinary.com/df6hie48w/raw/upload/gd/fl_attachment/grp-${groupNumber}-roll-${filename1}`,
+    fileUrl2 = `https://res.cloudinary.com/df6hie48w/raw/upload/gd/fl_attachment/grp-${groupNumber}-roll-${filename2}`,
+    fileUrl3 = `https://res.cloudinary.com/df6hie48w/raw/upload/gd/fl_attachment/grp-${groupNumber}-roll-${filename3}`,
+    fileUrl4 = `https://res.cloudinary.com/df6hie48w/raw/upload/gd/fl_attachment/grp-${groupNumber}-roll-${filename4}`,
+    fileUrl5 = `https://res.cloudinary.com/df6hie48w/raw/upload/gd/fl_attachment/grp-${groupNumber}-roll-${filename5}`,
+    fileUrl6 = `https://res.cloudinary.com/df6hie48w/raw/upload/gd/fl_attachment/grp-${groupNumber}-roll-${filename6}`;
 
-  const { download } = useDownloader();
+
 
   return (
     <section className={styles.cont}>
       <h1>PLEASE CLICK ON ANY OF THE BUTTONS TO DOWNLOAD GD CONTENTS BY STUDENTS</h1>
       <form onSubmit={submitHandler}>
-          <button onClick={() => download(fileUrl1, filename1)}>Roll No: {r1}</button> 
+          <a href={fileUrl1}>Roll No: {r1}</a> 
           <button onClick={() => download(fileUrl2, filename2)}>Roll No: {r2}</button>  
           <button onClick={() => download(fileUrl3, filename3)}>Roll No: {r3}</button>
           <button onClick={() => download(fileUrl4, filename4)}>Roll No: {r4}</button>

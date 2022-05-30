@@ -12,7 +12,7 @@ async function handle(req, res) {
         } else {
           group = await getGroup(req.query.email);
         }
-        return res.status(200).send(group);
+        return res.status(200).json(group);
       }
       case 'POST': {
         // Create a new user
