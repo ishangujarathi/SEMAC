@@ -1,13 +1,38 @@
 import React, { useState, useEffect } from 'react';
-import useDownloader from 'react-use-downloader';
 import styles from '../../../styles/viewer.module.css';
 const environment = process.env.NODE_ENV;
+import axios from 'axios';
 
 const GsViewer = (props) => {
   const { groupNumber } = props;
-  const { download } = useDownloader();
 
   const [filename, setFilename] = useState('');
+
+  const [mark, setMark] = useState('');
+
+  const markHandler = async (e) => {
+    e.preventDefault();
+    setMark(e.target.value);
+  };
+
+  const submitHandler = async (e) => {
+    e.preventDefault();
+
+    const body = { groupNumber: groupNumber, marks: mark };
+
+    await axios
+      .put(`/api/collab/gs`, body, {
+        headers: {
+          'Content-type': 'application/json',
+        },
+      })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   useEffect(() => {
     const url =
@@ -30,15 +55,19 @@ const GsViewer = (props) => {
       .catch(console.error);
   }, []);
 
-  const fileUrl = `https://res.cloudinary.com/df6hie48w/raw/upload/gs/grp-${groupNumber}-${filename.replace(
+  const fileUrl = `https://res.cloudinary.com/df6hie48w/raw/upload/fl_attachment/gs/grp-${groupNumber}-${filename.replace(
     /\s/g,
     '_'
   )}`;
 
   return (
     <section className={styles.cont}>
-      <h1>PLEASE CLICK ON FOLLOWING BUTTON TO DOWNLOAD GPPT</h1>
-      <button onClick={() => download(fileUrl, filename)}>GPPT</button>
+      <h1 style={{ marginBottom: '-8vh' }}>PLEASE CLICK ON FOLLOWING BUTTON TO DOWNLOAD GPPT</h1>
+      <form onSubmit={submitHandler}>
+        <a href={fileUrl}>GPPT</a>
+        <input type="text" name="mark" onChange={markHandler} />
+        <input type="submit" value="UPDATE MARKS" />
+      </form>
     </section>
   );
 };

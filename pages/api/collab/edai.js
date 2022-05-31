@@ -1,4 +1,4 @@
-import { createEdai, getEdai } from '../../../prisma/edai';
+import { createEdai, getEdai, updateEdai } from '../../../prisma/edai';
 
 async function handle(req, res) {
   try {
@@ -15,6 +15,10 @@ async function handle(req, res) {
       case 'POST': {
         const Edai = await createEdai(req.body);
         return res.status(200).json({ message: 'HA File Uploaded Successfully', Edai });
+      }
+      case 'PUT': {
+        const edi = await updateEdai(req.body);
+        return res.status(200).json({ message: 'HA Marks Updated Successfully', edi });
       }
       default:
         break;

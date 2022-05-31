@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import axios from 'axios';
 import styles from '../../../styles/viewer.module.css';
 const environment = process.env.NODE_ENV;
 
@@ -17,23 +18,26 @@ const GdViewer = ({ groupNumber, roll }) => {
 
   const markHandler = async (e) => {
     e.preventDefault();
-    setMark({ [e.target.name]: e.target.value });
+    setMark(e.target.value);
   };
 
   const submitHandler = async (e) => {
     e.preventDefault();
 
-    const body = { groupNumber, mark };
+    const body = { groupNumber: groupNumber, marks: mark };
 
-    const res = await fetch(`/api/collab/gd`, {
-      method: 'PUT',
-      body: JSON.stringify(body),
-      headers: {
-        'Content-type': 'application/json; charset=UTF-8',
-      },
-    });
-
-    console.log(await res.json());
+    await axios
+      .put(`/api/collab/gd`, body, {
+        headers: {
+          'Content-type': 'application/json',
+        },
+      })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   useEffect(() => {
@@ -66,12 +70,12 @@ const GdViewer = ({ groupNumber, roll }) => {
 
   const { filename1, filename2, filename3, filename4, filename5, filename6 } = files;
 
-  const fileUrl1 = `https://res.cloudinary.com/df6hie48w/raw/upload/gd/fl_attachment/grp-${groupNumber}-roll-${filename1}`,
-    fileUrl2 = `https://res.cloudinary.com/df6hie48w/raw/upload/gd/fl_attachment/grp-${groupNumber}-roll-${filename2}`,
-    fileUrl3 = `https://res.cloudinary.com/df6hie48w/raw/upload/gd/fl_attachment/grp-${groupNumber}-roll-${filename3}`,
-    fileUrl4 = `https://res.cloudinary.com/df6hie48w/raw/upload/gd/fl_attachment/grp-${groupNumber}-roll-${filename4}`,
-    fileUrl5 = `https://res.cloudinary.com/df6hie48w/raw/upload/gd/fl_attachment/grp-${groupNumber}-roll-${filename5}`,
-    fileUrl6 = `https://res.cloudinary.com/df6hie48w/raw/upload/gd/fl_attachment/grp-${groupNumber}-roll-${filename6}`;
+  const fileUrl1 = `https://res.cloudinary.com/df6hie48w/raw/upload/fl_attachment/gd/grp-${groupNumber}-roll-${filename1}`,
+    fileUrl2 = `https://res.cloudinary.com/df6hie48w/raw/upload/fl_attachment/gd/grp-${groupNumber}-roll-${filename2}`,
+    fileUrl3 = `https://res.cloudinary.com/df6hie48w/raw/upload/fl_attachment/gd/grp-${groupNumber}-roll-${filename3}`,
+    fileUrl4 = `https://res.cloudinary.com/df6hie48w/raw/upload/fl_attachment/gd/grp-${groupNumber}-roll-${filename4}`,
+    fileUrl5 = `https://res.cloudinary.com/df6hie48w/raw/upload/fl_attachment/gd/grp-${groupNumber}-roll-${filename5}`,
+    fileUrl6 = `https://res.cloudinary.com/df6hie48w/raw/upload/fl_attachment/gd/grp-${groupNumber}-roll-${filename6}`;
 
   return (
     <section className={styles.cont}>

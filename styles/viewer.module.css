@@ -33,7 +33,8 @@
 }
 
 .cont a,
-.cont input[type='submit'] {
+.cont input[type='submit'],
+.cont button {
   background-color: #0ff;
   border: none;
   border-radius: 0.8vw;
@@ -45,6 +46,7 @@
 }
 
 .cont a:hover,
-.cont input[type='submit']:hover {
+.cont input[type='submit']:hover,
+.cont button:hover {
   background-color: #00c6c6;
 }

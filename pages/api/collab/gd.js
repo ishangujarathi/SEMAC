@@ -17,7 +17,7 @@ async function handle(req, res) {
         return res.status(200).json({ message: 'GD Files Uploaded Successfully', gd });
       }
       case 'PUT': {
-        const marks = await updateGd(req.body)
+        await updateGd(req.body)
           .then((response) => {
             return res.status(200).json(response);
           })

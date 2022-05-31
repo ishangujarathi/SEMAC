@@ -1,4 +1,4 @@
-import { createGs, getGs } from '../../../prisma/gs';
+import { createGs, getGs, updateGs } from '../../../prisma/gs';
 
 async function handle(req, res) {
   try {
@@ -14,8 +14,11 @@ async function handle(req, res) {
       }
       case 'POST': {
         const gs = await createGs(req.body);
-        
         return res.status(200).json({ message: 'GS File Uploaded Successfully', gs });
+      }
+      case 'PUT': {
+        const gs = await updateGs(req.body);
+        return res.status(200).json({ message: 'GS Marks Updated', gs });
       }
       default:
         break;

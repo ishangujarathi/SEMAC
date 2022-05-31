@@ -1,4 +1,4 @@
-import { createHa, getHa } from '../../../prisma/ha';
+import { createHa, getHa, updateHa } from '../../../prisma/ha';
 
 async function handle(req, res) {
   try {
@@ -15,6 +15,10 @@ async function handle(req, res) {
       case 'POST': {
         const Ha = await createHa(req.body);
         return res.status(200).json({ message: 'HA File Uploaded Successfully', Ha });
+      }
+      case 'PUT': {
+        const ha = await updateHa(req.body);
+        return res.status(200).json({ message: 'HA Marks Updated Successfully', ha });
       }
       default:
         break;

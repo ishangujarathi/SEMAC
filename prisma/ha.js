@@ -25,8 +25,8 @@ export const createHa = async (body) => {
 };
 
 // UPDATE
-export const updateGs = async (body) => {
-  const gs = await prisma.gs.update({
+export const updateHa = async (body) => {
+  const ha = await prisma.ha.update({
     where: {
       groupNumber: body.groupNumber,
     },
@@ -35,5 +35,5 @@ export const updateGs = async (body) => {
     },
   });
 
-  return gs;
+  return ha;
 };

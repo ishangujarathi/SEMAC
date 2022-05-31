@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import useDownloader from 'react-use-downloader';
 import styles from '../../../styles/viewer.module.css';
 const environment = process.env.NODE_ENV;
+import axios from 'axios';
 
 const HaViewer = (props) => {
   const { groupNumber } = props;
@@ -13,6 +14,32 @@ const HaViewer = (props) => {
   const blogHandler = async (e) => {
     e.preventDefault();
     setClick(true);
+  };
+
+  const [mark, setMark] = useState('');
+
+  const markHandler = async (e) => {
+    e.preventDefault();
+    setMark(e.target.value);
+  };
+
+  const submitHandler = async (e) => {
+    e.preventDefault();
+
+    const body = { groupNumber: groupNumber, marks: mark };
+
+    await axios
+      .put(`/api/collab/ha`, body, {
+        headers: {
+          'Content-type': 'application/json',
+        },
+      })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   const [filename, setFilename] = useState('');
@@ -39,7 +66,7 @@ const HaViewer = (props) => {
       .catch(console.error);
   }, []);
 
-  const fileUrl = `https://res.cloudinary.com/df6hie48w/raw/upload/ha/grp-${groupNumber}-${filename.replace(
+  const fileUrl = `https://res.cloudinary.com/df6hie48w/raw/upload/fl_attachment/ha/grp-${groupNumber}-${filename.replace(
     /\s/g,
     '_'
   )}`;
@@ -49,7 +76,7 @@ const HaViewer = (props) => {
       {blog === '' && (
         <>
           <h1>PLEASE CLICK ON FOLLOWING BUTTON TO DOWNLOAD HA REPORT</h1>
-          <button onClick={() => download(fileUrl, filename)}>HA REPORT</button>
+          <a href={fileUrl}> REPORT</a>
         </>
       )}
       {blog !== '' && (
@@ -60,6 +87,10 @@ const HaViewer = (props) => {
           {click === true && <a href={blog}>{blog}</a>}
         </>
       )}
+      <form onSubmit={submitHandler}>
+        <input type="text" name="mark" onChange={markHandler} />
+        <input type="submit" value="UPDATE MARKS" />
+      </form>
     </section>
   );
 };
