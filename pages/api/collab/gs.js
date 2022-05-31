@@ -1,4 +1,5 @@
-import { createGs, getGs, updateGs } from '../../../prisma/gs';
+import { createGs, getGs } from '../../../prisma/gs';
+import { updateGs } from '../../../prisma/marks';
 
 async function handle(req, res) {
   try {

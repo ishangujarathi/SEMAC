@@ -1,4 +1,5 @@
-import { createEdai, getEdai, updateEdai } from '../../../prisma/edai';
+import { createEdai, getEdai } from '../../../prisma/edai';
+import { updateEdai } from '../../../prisma/marks';
 
 async function handle(req, res) {
   try {

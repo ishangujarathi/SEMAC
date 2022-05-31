@@ -1,4 +1,5 @@
-import { createHa, getHa, updateHa } from '../../../prisma/ha';
+import { createHa, getHa } from '../../../prisma/ha';
+import { updateHa } from '../../../prisma/marks';
 
 async function handle(req, res) {
   try {

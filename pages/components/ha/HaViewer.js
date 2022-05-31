@@ -26,7 +26,7 @@ const HaViewer = (props) => {
   const submitHandler = async (e) => {
     e.preventDefault();
 
-    const body = { groupNumber: groupNumber, marks: mark };
+    const body = { groupNumber: groupNumber, haMarks: mark };
 
     await axios
       .put(`/api/collab/ha`, body, {

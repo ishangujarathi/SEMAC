@@ -1,4 +1,5 @@
-import { createGd, getGd, updateGd } from '../../../prisma/gd';
+import { createGd, getGd } from '../../../prisma/gd';
+import { updateGd } from '../../../prisma/marks';
 
 async function handle(req, res) {
   try {

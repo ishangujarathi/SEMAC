@@ -23,17 +23,3 @@ export const createHa = async (body) => {
 
   return ha;
 };
-
-// UPDATE
-export const updateHa = async (body) => {
-  const ha = await prisma.ha.update({
-    where: {
-      groupNumber: body.groupNumber,
-    },
-    data: {
-      marks: body.marks,
-    },
-  });
-
-  return ha;
-};

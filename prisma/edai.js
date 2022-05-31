@@ -23,17 +23,3 @@ export const createEdai = async (body) => {
 
   return edai;
 };
-
-// UPDATE
-export const updateEdai = async (body) => {
-  const edai = await prisma.edai.update({
-    where: {
-      groupNumber: body.groupNumber,
-    },
-    data: {
-      marks: body.marks,
-    },
-  });
-
-  return edai;
-};

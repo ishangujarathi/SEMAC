@@ -18,7 +18,7 @@ const GsViewer = (props) => {
   const submitHandler = async (e) => {
     e.preventDefault();
 
-    const body = { groupNumber: groupNumber, marks: mark };
+    const body = { groupNumber: groupNumber, gsMarks: mark };
 
     await axios
       .put(`/api/collab/gs`, body, {

@@ -25,7 +25,7 @@ const EdaiViewer = (props) => {
   const submitHandler = async (e) => {
     e.preventDefault();
 
-    const body = { groupNumber: groupNumber, marks: mark };
+    const body = { groupNumber: groupNumber, edaiMarks: mark };
 
     await axios
       .put(`/api/collab/edai`, body, {

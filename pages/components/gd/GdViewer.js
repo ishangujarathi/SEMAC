@@ -24,7 +24,7 @@ const GdViewer = ({ groupNumber, roll }) => {
   const submitHandler = async (e) => {
     e.preventDefault();
 
-    const body = { groupNumber: groupNumber, marks: mark };
+    const body = { groupNumber: groupNumber, gdMarks: mark };
 
     await axios
       .put(`/api/collab/gd`, body, {
