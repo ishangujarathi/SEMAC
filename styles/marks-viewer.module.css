@@ -1,0 +1,111 @@
+.cont {
+  overflow: hidden;
+  position: relative;
+  left: 12.5%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-right: 12vw;
+  background-color: #e8d5b5;
+  width: 100%;
+  height: 100vh;
+  border-top-left-radius: 3vw;
+  gap: 5vw;
+}
+
+.cont h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 5vw;
+  color: blueviolet;
+}
+
+.cont table {
+  width: 90%;
+  border-collapse: collapse;
+  text-align: left;
+  overflow: hidden;
+  border-style: solid;
+  overflow-y: scroll;
+}
+.cont table td,
+.cont table th {
+  border-top: 1px solid #ecf0f1;
+  padding: 10px;
+  border-style: solid;
+}
+.cont table td {
+  border-left: 1px solid #ecf0f1;
+  border-right: 1px solid #ecf0f1;
+}
+.cont table th {
+  background-color: #4ecdc4;
+}
+.cont table tr:nth-of-type(even) td {
+  background-color: #d9f4f2;
+}
+.cont table th {
+  background-color: white;
+}
+.cont table td {
+  text-align: center;
+  font-weight: 700;
+}
+
+@media only screen and (max-width: 760px) {
+  .cont table tr td:not(:first-child),
+  .cont table tr th:not(:first-child),
+  .cont table tr td:not(.total-val) {
+    display: none;
+  }
+  .cont table tr:nth-of-type(even) td:first-child {
+    background-color: #d9f4f2;
+  }
+  .cont table tr:nth-of-type(odd) td:first-child {
+    background-color: white;
+  }
+  .cont table tr:nth-of-type(even) td:not(:first-child) {
+    background-color: white;
+  }
+  .cont table tr th:first-child {
+    width: 100%;
+    display: block;
+  }
+  .cont table tr th:not(:first-child) {
+    width: 40%;
+    transition: transform 0.4s ease-out;
+    transform: translateY(-9999px);
+    position: relative;
+    z-index: -1;
+  }
+  .cont table tr td:not(:first-child) {
+    transition: transform 0.4s ease-out;
+    transform: translateY(-9999px);
+    width: 60%;
+    position: relative;
+    z-index: -1;
+  }
+  .cont table tr td:first-child {
+    display: block;
+    cursor: pointer;
+  }
+  .cont table tr.total th {
+    width: 25%;
+    display: inline-block;
+  }
+  .cont table tr td.total-val {
+    display: inline-block;
+    transform: translateY(0);
+    width: 75%;
+  }
+}
+@media only screen and (max-width: 300px) {
+  .cont table tr th:not(:first-child) {
+    width: 50%;
+    font-size: 14px;
+  }
+  .cont table tr td:not(:first-child) {
+    width: 50%;
+    font-size: 14px;
+  }
+}

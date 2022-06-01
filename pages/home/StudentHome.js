@@ -85,7 +85,7 @@ function StudentHome({ role }) {
             <div className={styles.tabs}>
               <div className={styles.categories}>
                 <a href="/marks/MarksViewer">
-                  <h2>PERFORMANCE</h2>
+                  <h2>MARKSHEET</h2>
                 </a>
               </div>
             </div>

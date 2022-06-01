@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useState } from 'react';
 import styles from '../../styles/group.module.css';
 
@@ -9,6 +10,22 @@ const GroupComponent = (props) => {
     setClick(true);
     setGroup(groupNumber);
     setRoll(roll);
+    await axios
+      .post(
+        '/api/collab/marks',
+        { groupNumber, roll },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        }
+      )
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   if (role && role === 'Teacher') {

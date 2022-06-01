@@ -108,12 +108,18 @@ model edai {
 model marks {
       id        String   @id @default(auto()) @map("_id") @db.ObjectId
       groupNumber String @unique
-      haMarks String @default("0")
-      gsMarks String @default("0")
-      gdMarks String @default("0")
-      edaiMarks String @default("0")
-      sdpMarks String @default("0")
-      mseMarks String @default("0")
-      eseMarks String @default("0")
-      cvvMarks String @default("0")
+      haMarks String 
+      gsMarks String 
+      gdMarks String 
+      edaiMarks String 
+      sdpMarks String 
+      mseMarks String 
+      eseMarks String 
+      cvvMarks String 
+      r1 String
+      r2 String
+      r3 String
+      r4 String
+      r5 String
+      r6 String 
 }

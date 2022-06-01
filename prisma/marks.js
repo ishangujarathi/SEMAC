@@ -3,22 +3,37 @@ import prisma from './prisma';
 
 // READ
 
-export const getMarks = async (groupNumber) => {
-  const marks = await prisma.marks.findUnique({
-    where: { groupNumber },
-  });
-  const filename = JSON.parse(JSON.stringify(marks));
-  return filename;
+export const getAllMarks = async () => {
+  const mark = await prisma.marks.findMany();
+  // const marks = JSON.parse(JSON.stringify(mark));
+  return mark;
 };
 
 //CREATE
 
-export const createMarks = async () => {
+export const createMarks = async (body) => {
+  const [r1, r2, r3, r4, r5, r6] = body.roll;
   const marks = await prisma.marks.create({
     data: {
-      haMarks: 0,
+      groupNumber: body.groupNumber,
+      haMarks: '0',
+      gsMarks: '0',
+      gdMarks: '0',
+      edaiMarks: '0',
+      sdpMarks: '0',
+      cvvMarks: '0',
+      mseMarks: '0',
+      eseMarks: '0',
+      r1: r1,
+      r2: r2,
+      r3: r3,
+      r4: r4,
+      r5: r5,
+      r6: r6,
     },
   });
+
+  return marks;
 };
 
 // UPDATE
