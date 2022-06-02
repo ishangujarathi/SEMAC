@@ -72,7 +72,9 @@ function StudentHome({ role }) {
             </div>
             <div className={styles.tabs}>
               <div className={styles.categories}>
-                <h2>Attendance</h2>
+                <a href="/attendance/AttendanceViewer">
+                  <h2>Attendance</h2>
+                </a>
               </div>
             </div>
             <div className={styles.tabs}>

@@ -45,6 +45,7 @@ model User {
   image         String?
   accounts      Account[]
   sessions      Session[]
+  roll String @default("0")
   role String @default("Student")
 }
 
@@ -122,4 +123,30 @@ model marks {
       r4 String
       r5 String
       r6 String 
+}
+
+model courses {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  course_code String @unique
+  course_name String
+  load_type String
+  instructor_name String
+  conducted String
+  branch String
+  division String
+  year String
+  semester String
+}
+
+model students {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  roll String @unique
+  branch String
+  division String
+  attendance Att[]
+}
+
+type Att {
+  course_code String
+  present String
 }
