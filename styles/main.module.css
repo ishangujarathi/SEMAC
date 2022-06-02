@@ -1,10 +1,10 @@
 .navcontainer {
   position: fixed;
-  width: 11.5vw;
+  width: 11.9vw;
   height: 100%;
   background-color: #34057f;
   color: white;
-  top: 9%;
+  top: 10%;
   overflow: hidden;
   z-index: 2000;
 }

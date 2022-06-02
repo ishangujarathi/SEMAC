@@ -8,6 +8,7 @@ async function handle(req, res) {
         return res.status(200).json({ courses });
       }
       case 'POST': {
+        console.log(req.body);
         const course = await createCourse(req.body);
         return res.status(200).json({ message: 'Course Added Successfully', course });
       }

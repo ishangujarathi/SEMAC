@@ -3,7 +3,7 @@ import prisma from './prisma';
 
 // READ
 
-export const getAllCourses = async (body) => {
+export const getAllCourses = async () => {
   const courses = await prisma.courses.findMany();
   const res = JSON.parse(JSON.stringify(courses));
   return res;
@@ -17,7 +17,7 @@ export const getAllStudents = async () => {
 
 export const getStudent = async (body) => {
   const student = await prisma.students.findUnique({
-    where: { roll: body.roll }
+    where: { roll: body.roll },
   });
   const res = JSON.parse(JSON.stringify(student));
   return res;
@@ -55,7 +55,7 @@ export const createCourse = async (body) => {
 
 export const createStudent = async (body) => {
   const { roll, branch, division, attendance } = body;
-  const student = await prisma.courses.create({
+  const student = await prisma.student.create({
     data: {
       roll,
       branch,
@@ -70,12 +70,11 @@ export const createStudent = async (body) => {
 // UPDATE
 
 export const updateAttendance = async (body) => {
-  const { roll } = body;
-  const attendanceUpdated = await prisma.courses.update({
+  const { roll, attendance } = body;
+  const attendanceUpdated = await prisma.students.update({
     where: { roll },
     data: {
-      conducted,
-      present,
+      attendance,
     },
   });
   return attendanceUpdated;

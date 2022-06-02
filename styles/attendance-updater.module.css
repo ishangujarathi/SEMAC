@@ -45,8 +45,47 @@
   align-items: center;
   justify-content: center;
   gap: 1vw;
-  background-color: cadetblue;
-  border-radius: 2vw;
+  background: #e5d6b5;
+  box-shadow: 20px 20px 60px #c3b69a, -20px -20px 60px #fff6d0;
+  border-radius: 1.5vw;
   overflow: hidden;
-  padding: 2vw;
+  padding: 1vw;
+}
+
+.cont form input[type='text'] {
+  border-radius: 0.5vw;
+  border: none;
+  max-width: 5vw;
+  font-size: 1.4vw;
+  padding: 0.3vw;
+  font-family: 'Montserrat', sans-serif;
+  text-align: center;
+}
+
+.cont form input[type='submit'] {
+  font-size: 1.4vw;
+  padding: 0.4vw;
+  border: 0.2em solid white;
+  border-radius: 0.8vw;
+  background-color: aqua;
+  transition: 0.6s all cubic-bezier(0.23, 1, 0.32, 1);
+  will-change: background-color color;
+}
+
+.cont form input[type='submit']:hover {
+  background-color: tomato;
+  color: white;
+}
+
+.cont form label {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.3vw;
+}
+
+.topLabel {
+  margin-left: -9.5vw;
+}
+
+.cont form input::placeholder {
+  font-size: 1vw;
 }
