@@ -24,15 +24,22 @@ export async function getServerSideProps({ req }) {
 
   const url =
     environment === 'production' ? 'https://semac.vercel.app/api' : `http://localhost:3000/api`;
+  
+  let user;
+  
+  if (email) {
 
-  const res = await fetch(`${url}/auth/user/?email=${email}`, {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  });
-  const user = await res.json();
-
+    const res = await fetch(`${url}/auth/user/?email=${email}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    user = await res.json();
+  }
+  else {
+    user = null;
+  }
   // Pass data to the page via props
   return { props: { user } };
 }

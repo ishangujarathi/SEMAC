@@ -16,8 +16,8 @@ const TeeacherHome = ({ role }) => {
             </div>
             <div className={styles.tabs}>
               <div className={styles.categories}>
-                <a href="/AttendanceUpdater">
-                  <h2 className={styles.ttabs}>ATTENDACE UPDATER</h2>
+                <a href="/attendance/AttendanceUpdater">
+                  <h2 className={styles.ttabs}>ATTENDANCE MANAGER</h2>
                 </a>
               </div>
             </div>

@@ -4,11 +4,22 @@ import prisma from './prisma';
 // READ
 
 export const getAllCourses = async (body) => {
-  const { roll } = body;
-  const courses = await prisma.courses.findMany({
-    where: { roll },
-  });
+  const courses = await prisma.courses.findMany();
   const res = JSON.parse(JSON.stringify(courses));
+  return res;
+};
+
+export const getAllStudents = async () => {
+  const students = await prisma.students.findMany();
+  const res = JSON.parse(JSON.stringify(students));
+  return res;
+};
+
+export const getStudent = async (body) => {
+  const student = await prisma.students.findUnique({
+    where: { roll: body.roll }
+  });
+  const res = JSON.parse(JSON.stringify(student));
   return res;
 };
 
