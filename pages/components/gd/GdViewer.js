@@ -4,7 +4,11 @@ import styles from '../../../styles/viewer.module.css';
 const environment = process.env.NODE_ENV;
 
 const GdViewer = ({ groupNumber, roll }) => {
-  const [r1, r2, r3, r4, r5, r6] = roll;
+  let r1, r2, r3, r4, r5, r6;
+
+  if (roll) {
+    [r1, r2, r3, r4, r5, r6] = roll;
+  }
   const [mark, setMark] = useState('');
 
   const [files, setFiles] = useState({
