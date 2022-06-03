@@ -15,7 +15,7 @@ const AttendanceViewer = ({ attendance, user }) => {
   if (role && role === 'Student') {
     return (
       <section className={styles.cont}>
-        <h1>DIVISION ATTENDANCE</h1>
+        <h1>ATTENDANCE</h1>
         <table>
           <thead>
             <tr>
