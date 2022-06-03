@@ -9,10 +9,21 @@ const TableRow = (props) => {
   const course_code_3 = attendance[2].course_code;
   const course_code_4 = attendance[3].course_code;
 
+  const present_1 = attendance[0].present;
+  const present_2 = attendance[1].present;
+  const present_3 = attendance[2].present;
+  const present_4 = attendance[3].present;
+
   const [courseOne, setCourseOne] = useState({});
   const [courseTwo, setCourseTwo] = useState({});
   const [courseThree, setCourseThree] = useState({});
   const [courseFour, setCourseFour] = useState({});
+
+  const attendance_1 = Math.round((parseInt(present_1) / parseInt(courseOne.conducted)) * 100);
+  const attendance_2 = Math.round((parseInt(present_2) / parseInt(courseTwo.conducted)) * 100);
+  const attendance_3 = Math.round((parseInt(present_3) / parseInt(courseThree.conducted)) * 100);
+  const attendance_4 = Math.round((parseInt(present_4) / parseInt(courseFour.conducted)) * 100);
+
 
   useEffect(() => {
     const func_1 = async () => {
@@ -78,35 +89,35 @@ const TableRow = (props) => {
           <td>{courseOne.course_name}</td>
           <td>{courseOne.load_type}</td>
           <td>{courseOne.instructor_name}</td>
-          <td>{12}</td>
-          <td>{20}</td>
+          <td>{present_1 + '/' + courseOne.conducted}</td>
+          <td>{attendance_1 + '%'}</td>
         </tr>
         <tr>
-          <td>{1}</td>
+          <td>{2}</td>
           <td>{course_code_2}</td>
           <td>{courseTwo.course_name}</td>
           <td>{courseTwo.load_type}</td>
           <td>{courseTwo.instructor_name}</td>
-          <td>{12}</td>
-          <td>{20}</td>
+          <td>{present_2 + '/' + courseTwo.conducted}</td>
+          <td>{attendance_2 + '%'}</td>
         </tr>{' '}
         <tr>
-          <td>{1}</td>
+          <td>{3}</td>
           <td>{course_code_3}</td>
           <td>{courseThree.course_name}</td>
           <td>{courseThree.load_type}</td>
           <td>{courseThree.instructor_name}</td>
-          <td>{12}</td>
-          <td>{20}</td>
+          <td>{present_3 + '/' + courseThree.conducted}</td>
+          <td>{attendance_3 + '%'}</td>
         </tr>{' '}
         <tr>
-          <td>{1}</td>
+          <td>{4}</td>
           <td>{course_code_4}</td>
           <td>{courseFour.course_name}</td>
           <td>{courseFour.load_type}</td>
           <td>{courseFour.instructor_name}</td>
-          <td>{12}</td>
-          <td>{20}</td>
+          <td>{present_4 + '/' + courseFour.conducted}</td>
+          <td>{attendance_4 + '%'}</td>
         </tr>{' '}
       </tbody>
     );
