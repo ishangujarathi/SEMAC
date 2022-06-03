@@ -1,16 +1,21 @@
-import { updateAttendance, createStudent, getAllStudents, getStudent } from '../../../prisma/attendance';
+import {
+  updateAttendance,
+  createStudent,
+  getAllStudents,
+  getStudent,
+} from '../../../prisma/attendance';
 
 async function handle(req, res) {
   try {
     switch (req.method) {
       case 'GET': {
+        let students;
         if (req.query.get === 'all') {
-          const students = await getAllStudents(req.body);
+          students = await getAllStudents();
+        } else {
+          students = await getStudent(req.query.roll);
         }
-        else {
-          const student = await getStudent(req.body);
-        }
-        return res.status(200).json({ courses });
+        return res.status(200).json({ students });
       }
       case 'POST': {
         const student = await createStudent(req.body);

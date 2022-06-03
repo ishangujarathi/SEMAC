@@ -48,7 +48,7 @@ const AttendanceUpdater = () => {
 
   const studentTextHandler = async (e) => {
     e.preventDefault();
-    setStudents({ [e.target.name]: e.target.value });
+    setStudents({ ...students, [e.target.name]: e.target.value });
   };
 
   const studentSubmitHandler = async (e) => {
@@ -68,10 +68,10 @@ const AttendanceUpdater = () => {
     } = students;
 
     const attendance = [
-      { course_code_1, attendance_1 },
-      { course_code_2, attendance_2 },
-      { course_code_3, attendance_3 },
-      { course_code_4, attendance_4 },
+      { course_code: course_code_1, present: attendance_1 },
+      { course_code: course_code_2, present: attendance_2 },
+      { course_code: course_code_3, present: attendance_3 },
+      { course_code: course_code_4, present: attendance_4 },
     ];
 
     await axios
@@ -94,7 +94,7 @@ const AttendanceUpdater = () => {
 
   const courseTextHandler = async (e) => {
     e.preventDefault();
-    setCourses({ [e.target.name]: e.target.value });
+    setCourses({ ...courses, [e.target.name]: e.target.value });
   };
 
   const courseSubmitHandler = async (e) => {
@@ -124,6 +124,7 @@ const AttendanceUpdater = () => {
       semester,
     };
 
+
     await axios
       .post('/api/attendance/course', body, {
         headers: {
@@ -140,7 +141,7 @@ const AttendanceUpdater = () => {
 
   const attendanceTextHandler = async (e) => {
     e.preventDefault();
-    setAttendances({ [e.target.name]: e.target.value });
+    setAttendances({ ...attendances, [e.target.name]: e.target.value });
   };
 
   const attendanceSubmitHandler = async (e) => {
@@ -158,19 +159,20 @@ const AttendanceUpdater = () => {
       attendance_4,
     } = attendances;
 
+    const attendance = [
+      { course_code: course_code_1, present: attendance_1 },
+      { course_code: course_code_2, present: attendance_2 },
+      { course_code: course_code_3, present: attendance_3 },
+      { course_code: course_code_4, present: attendance_4 },
+    ];
+
+
     await axios
       .put(
         '/api/attendance/student',
         {
           roll,
-          course_code_1,
-          course_code_2,
-          course_code_3,
-          course_code_4,
-          attendance_1,
-          attendance_2,
-          attendance_3,
-          attendance_4,
+          attendance,
         },
         {
           headers: {
@@ -230,11 +232,11 @@ const AttendanceUpdater = () => {
             </label>
             <label className={styles.topLabel}>
               DIVISION:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              <input type="text" required onChange={studentTextHandler} branch="division" />
+              <input type="text" required onChange={studentTextHandler} name="division" />
             </label>
             <label className={styles.topLabel}>
               ROLL NO:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              <input type="text" required onChange={studentTextHandler} branch="roll" />
+              <input type="text" required onChange={studentTextHandler} name="roll" />
             </label>
             <label>
               ATTENDANCE 1:&nbsp;&nbsp;

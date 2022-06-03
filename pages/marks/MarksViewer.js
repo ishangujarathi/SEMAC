@@ -14,16 +14,16 @@ const MarksViewer = ({ marks, user }) => {
         <h1>DIVISION MARKSHEET</h1>
         <table>
           <tr>
-            <td>Group Number</td>
-            <td>Roll Number</td>
-            <td>GD</td>
-            <td>GS</td>
-            <td>HA</td>
-            <td>MSE</td>
-            <td>ESE</td>
-            <td>EDAI</td>
-            <td>SDP</td>
-            <td>CVV</td>
+            <th>Group Number</th>
+            <th>Roll Number</th>
+            <th>GD</th>
+            <th>GS</th>
+            <th>HA</th>
+            <th>MSE</th>
+            <th>ESE</th>
+            <th>EDAI</th>
+            <th>SDP</th>
+            <th>CVV</th>
           </tr>
           {marks.map((element) => (
             <TableRow
