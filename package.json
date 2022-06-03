@@ -6,11 +6,13 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "pinstall": "yarn install --production",
+    "pinstall": "pnpm install --production",
     "lintfix": "eslint  \"**/*.js\" --fix --cache",
-    "prettier": "prettier --write \"**/*.js\""
+    "prettier": "prettier --write \"**/*.js\"",
+    "postinstall": "prisma generate"
   },
   "dependencies": {
+    "@babel/core": ">=7.0.0 <8.0.0",
     "@fortawesome/fontawesome-svg-core": "^6.1.1",
     "@fortawesome/free-brands-svg-icons": "^6.1.1",
     "@fortawesome/free-solid-svg-icons": "^6.1.1",
@@ -25,20 +27,22 @@
     "next": "12.1.6",
     "next-auth": "^4.3.4",
     "next-connect": "^0.12.2",
-    "prisma": "^3.14.0",
+    "next-pwa": "^5.5.2",
     "react": "17.0.2",
     "react-chartjs-2": "^4.1.0",
     "react-dom": "17.0.2",
     "react-toastify": "^9.0.3",
     "react-use-downloader": "^1.1.7",
-    "uuidv4": "^6.2.13"
+    "uuidv4": "^6.2.13",
+    "webpack": ">=5.9.0 <6.0.0"
   },
   "devDependencies": {
     "eslint": "^8.16.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-markdown": "^2.2.1",
-    "prettier": "^2.6.2"
+    "prettier": "^2.6.2",
+    "prisma": "^3.14.0"
   },
   "packageManager": "pnpm@7.1.7"
 }
