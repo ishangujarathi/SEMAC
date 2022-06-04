@@ -9,6 +9,16 @@ export const getAllMarks = async () => {
   return mark;
 };
 
+export const getMarks = async (roll) => {
+  const mark = await prisma.marks.findUnique({
+    where: { r1: roll } || { r2: roll } || { r3: roll } || { r4: roll } || { r5: roll } || {
+        r6: roll,
+      },
+  });
+  const marks = JSON.parse(JSON.stringify(mark));
+  return marks;
+};
+
 //CREATE
 
 export const createMarks = async (body) => {
@@ -80,7 +90,7 @@ export const updateEdai = async (body) => {
       groupNumber: body.groupNumber,
     },
     data: {
-      edaiMarks: body.daiMarks,
+      edaiMarks: body.edaiMarks,
     },
   });
 

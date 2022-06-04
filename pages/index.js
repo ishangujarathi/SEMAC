@@ -5,12 +5,14 @@ import Plogin from './Plogin.js';
 import { getSession } from 'next-auth/react';
 const environment = process.env.NODE_ENV;
 
-export default function Home({ user }) {
+export default function Home({ user, marks, attendance }) {
   const role = user?.role;
   return (
     <div className={styles.container}>
       {!user && <Plogin />}
-      {user && role === 'Student' && <StudentHome role={role} />}
+      {user && role === 'Student' && (
+        <StudentHome role={role} marks={marks} attendance={attendance} />
+      )}
       {user && role === 'Teacher' && <TeacherHome role={role} />}
     </div>
   );
@@ -24,11 +26,10 @@ export async function getServerSideProps({ req }) {
 
   const url =
     environment === 'production' ? 'https://semac.vercel.app/api' : `http://localhost:3000/api`;
-  
-  let user;
-  
-  if (email) {
 
+  let user, marks, attendance;
+
+  if (email) {
     const res = await fetch(`${url}/auth/user/?email=${email}`, {
       method: 'GET',
       headers: {
@@ -36,10 +37,29 @@ export async function getServerSideProps({ req }) {
       },
     });
     user = await res.json();
-  }
-  else {
+
+    const roll = user.roll;
+
+    if (user.role === 'Student') {
+      const response = await fetch(`${url}/collab/marks/?roll=${roll}`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      marks = await response.json();
+
+      const resp = await fetch(`${url}/attendance/student/?roll=${roll}`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      attendance = await resp.json();
+    }
+  } else {
     user = null;
   }
   // Pass data to the page via props
-  return { props: { user } };
+  return { props: { user, marks, attendance } };
 }

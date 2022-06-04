@@ -15,11 +15,11 @@ async function handle(req, res) {
       }
       case 'POST': {
         const Edai = await createEdai(req.body);
-        return res.status(200).json({ message: 'HA File Uploaded Successfully', Edai });
+        return res.status(200).json({ message: 'EDAI File Uploaded Successfully', Edai });
       }
       case 'PUT': {
         const edi = await updateEdai(req.body);
-        return res.status(200).json({ message: 'HA Marks Updated Successfully', edi });
+        return res.status(200).json({ message: 'EDAI Marks Updated Successfully', edi });
       }
       default:
         break;

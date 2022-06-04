@@ -117,12 +117,12 @@ model marks {
       mseMarks String 
       eseMarks String 
       cvvMarks String 
-      r1 String
-      r2 String
-      r3 String
-      r4 String
-      r5 String
-      r6 String 
+      r1 String  @unique
+      r2 String @unique
+      r3 String @unique
+      r4 String @unique
+      r5 String @unique
+      r6 String  @unique
 }
 
 model courses {

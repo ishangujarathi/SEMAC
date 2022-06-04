@@ -7,6 +7,9 @@ async function handle(req, res) {
         if ((req.query.getAll = true)) {
           const marks = await getAllMarks();
           return res.status(200).json(marks);
+        } else if (req.query.roll) {
+          const marks = await getMarks(req.query.roll);
+          return res.status(200).json(marks);
         }
       }
       case 'POST': {
