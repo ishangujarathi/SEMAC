@@ -1,11 +1,22 @@
 import { createChatBotMessage } from 'react-chatbot-kit';
 import Options from '../../pages/components/chatbot/molecules/Options';
-import ExperienceCards from '../../pages/components/chatbot/organisms/ExperienceCards';
-import ProjectCards from '../../pages/components/chatbot/organisms/ProjectCards';
-import SkillCards from '../../pages/components/chatbot/organisms/SkillCards';
-import BlogCards from '../../pages/components/chatbot/organisms/BlogCards';
 
 const getMoodOptions = (actionProvider) => {
+  return [
+    {
+      text: 'Nice',
+      handler: () => actionProvider.handleGoodMood(),
+      id: 1,
+    },
+    {
+      text: 'I am sad',
+      handler: () => actionProvider.handleBadMood(),
+      id: 2,
+    },
+  ];
+};
+
+const getFaqOptions = (actionProvider) => {
   return [
     {
       text: 'Why should I visit this website?',
@@ -70,35 +81,10 @@ const getJokeOptions = (actionProvider) => {
   ];
 };
 
-const getPersonalOptions = (actionProvider) => {
-  return [
-    {
-      text: 'Experience',
-      handler: () => actionProvider.handleExperience(),
-      id: 1,
-    },
-    {
-      text: 'Projects',
-      handler: () => actionProvider.handleProjects(),
-      id: 2,
-    },
-    {
-      text: 'Skills',
-      handler: () => actionProvider.handleSkills(),
-      id: 3,
-    },
-    {
-      text: 'Blogs',
-      handler: () => actionProvider.handleBlogs(),
-      id: 4,
-    },
-  ];
-};
-
 const config = {
-  botName: 'Jeffrey Yu',
+  botName: 'Vishwa Bot',
   initialMessages: [
-    createChatBotMessage("Hi, I'm Jeffrey. Nice to meet you! I How are you doing today?", {
+    createChatBotMessage("Hi, I'm VishwaBot. Nice to meet you! I How are you doing today?", {
       widget: 'moodOptions',
     }),
   ],
@@ -124,26 +110,16 @@ const config = {
       ),
     },
     {
-      widgetName: 'personalOptions',
+      widgetName: 'jokeOptions',
       widgetFunc: ({ actionProvider }) => (
-        <Options actionProvider={actionProvider} getOptions={getPersonalOptions} />
+        <Options actionProvider={actionProvider} getOptions={getJokeOptions} />
       ),
     },
     {
-      widgetName: 'experienceOptions',
-      widgetFunc: () => <ExperienceCards />,
-    },
-    {
-      widgetName: 'projectsOptions',
-      widgetFunc: () => <ProjectCards />,
-    },
-    {
-      widgetName: 'skillsOptions',
-      widgetFunc: () => <SkillCards />,
-    },
-    {
-      widgetName: 'blogsOptions',
-      widgetFunc: () => <BlogCards />,
+      widgetName: 'faqOptions',
+      widgetFunc: ({ actionProvider }) => (
+        <Options actionProvider={actionProvider} getOptions={getFaqOptions} />
+      ),
     },
   ],
 };

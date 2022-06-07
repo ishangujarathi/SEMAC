@@ -54,6 +54,15 @@
   padding: 1px;
 }
 
+.react-chatbot-kit-chat-bot-message-container::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+.react-chatbot-kit-chat-bot-message-container::-webkit-scrollbar-thumb {
+  background: #ff0000;
+}
+
 .react-chatbot-kit-chat-bot-avatar {
   display: none;
 }
