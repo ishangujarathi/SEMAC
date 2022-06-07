@@ -59,6 +59,8 @@ export async function getServerSideProps({ req }) {
     }
   } else {
     user = null;
+    marks = null;
+    attendance = null;
   }
   // Pass data to the page via props
   return { props: { user, marks, attendance } };

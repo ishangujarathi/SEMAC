@@ -85,3 +85,13 @@ th {
   padding: 0.75vw;
   border: 0.125vw dotted;
 }
+
+.MuiDrawer-paper {
+  width: 65%;
+}
+
+@media (max-width: 640px) {
+  .MuiDrawer-paper {
+    width: 100%;
+  }
+}

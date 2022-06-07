@@ -25,6 +25,13 @@ function LeftNavbar() {
             />{' '}
             <a href="/">Dashboard</a>
           </li>
+          <li>
+            <FontAwesomeIcon
+              icon={faTachometerAlt}
+              style={{ width: '2vw', fontSize: '1.5vw', cursor: 'pointer' }}
+            />{' '}
+            <a href="/chatbot/Chatbot">CHATBOT</a>
+          </li>
           {status === 'unauthenticated' && (
             <li>
               <FontAwesomeIcon

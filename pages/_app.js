@@ -1,16 +1,21 @@
 import { SessionProvider } from 'next-auth/react';
-import { ToastContainer } from 'react-toastify';
-import '../styles/globals.css';
 import Header from './components/common/Header';
 import LeftNavbar from './components/common/LeftNavbar';
+import { ThemeProvider, CssBaseline } from '@mui/material';
+import lightTheme from '../styles/theme/lightTheme';
+import '../styles/globals.css';
+import '../styles/chatbox.css';
 
-function MyApp({ Component, pageProps }) {
+function MyApp(props) {
+  const { Component, pageProps } = props;
   return (
-    <SessionProvider>
-      <Header />
-      <LeftNavbar />
-      <Component {...pageProps} />
-      {/* <ToastContainer
+    <ThemeProvider theme={lightTheme}>
+      <CssBaseline />
+      <SessionProvider>
+        <Header />
+        <LeftNavbar />
+        <Component {...pageProps} />
+        {/* <ToastContainer
         position="top-right"
         autoClose={8000}
         hideProgressBar={false}
@@ -20,7 +25,8 @@ function MyApp({ Component, pageProps }) {
         closeOnClick
         pauseOnHover
       /> */}
-    </SessionProvider>
+      </SessionProvider>
+    </ThemeProvider>
   );
 }
 
