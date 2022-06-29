@@ -147,11 +147,11 @@ function StudentHome({ role, marks, attendance }) {
           {/* chart started  */}
           <div className={styles.charts}>
             <div className={styles.circle}>
-              <h2>Sales</h2>
+              <h2>Attendance Graph</h2>
               <Bar data={data2} />
             </div>
             <div className={styles.circle}>
-              <h2>Customers Arrived</h2>
+              <h2>Marks Pie Chart</h2>
               <Doughnut data={data1} className={styles.nut} />
             </div>
           </div>
