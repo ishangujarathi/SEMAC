@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 import styles from '../../styles/student-group.module.css';
 import { getSession } from 'next-auth/react';
+const environment = process.env.NODE_ENV;
 
 const StudentGroup = ({ email, user }) => {
   const router = useRouter();
@@ -36,7 +37,7 @@ const StudentGroup = ({ email, user }) => {
     });
 
     if (typeof window !== 'undefined') {
-      router.push('/MainCollab');
+      router.push('/collab/MainCollab');
     }
   };
 
@@ -152,6 +153,9 @@ export default StudentGroup;
 
 export async function getServerSideProps({ req }) {
   // Fetch data from external API
+
+  const url =
+    environment === 'production' ? 'https://semac.vercel.app/api' : `http://localhost:3000/api`;
 
   const session = await getSession({ req });
   const email = session?.user.email;

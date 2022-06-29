@@ -54,8 +54,8 @@ class ActionProvider {
 
   handleGoodMoodFinally() {
     const message = this.createChatBotMessage(
-      `Glad you're happy! Let me do a quick self intro: ${intro}`,
-      { widget: 'personalOptions' }
+      `${intro}`,
+      { widget: 'faqOptions' }
     );
     this.updateChatbotState(message);
   }

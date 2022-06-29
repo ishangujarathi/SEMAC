@@ -27,7 +27,9 @@ export async function getServerSideProps({ req }) {
   const url =
     environment === 'production' ? 'https://semac.vercel.app/api' : `http://localhost:3000/api`;
 
-  let user, marks, attendance;
+  let user = null,
+    marks = null,
+    attendance = null;
 
   if (email) {
     const res = await fetch(`${url}/auth/user/?email=${email}`, {
@@ -57,10 +59,6 @@ export async function getServerSideProps({ req }) {
       });
       attendance = await resp.json();
     }
-  } else {
-    user = null;
-    marks = null;
-    attendance = null;
   }
   // Pass data to the page via props
   return { props: { user, marks, attendance } };

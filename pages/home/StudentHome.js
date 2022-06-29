@@ -59,14 +59,14 @@ function StudentHome({ role, marks, attendance }) {
       present_4;
 
     if (attendance) {
-      course_code_1 = attendance.students.attendance[0].course_code;
-      course_code_2 = attendance.students.attendance[1].course_code;
-      course_code_3 = attendance.students.attendance[2].course_code;
-      course_code_4 = attendance.students.attendance[3].course_code;
-      present_1 = attendance.students.attendance[0].present;
-      present_2 = attendance.students.attendance[1].present;
-      present_3 = attendance.students.attendance[2].present;
-      present_4 = attendance.students.attendance[3].present;
+      course_code_1 = attendance.students?.attendance[0].course_code;
+      course_code_2 = attendance.students?.attendance[1].course_code;
+      course_code_3 = attendance.students?.attendance[2].course_code;
+      course_code_4 = attendance.students?.attendance[3].course_code;
+      present_1 = attendance.students?.attendance[0].present;
+      present_2 = attendance.students?.attendance[1].present;
+      present_3 = attendance.students?.attendance[2].present;
+      present_4 = attendance.students?.attendance[3].present;
     }
 
     //doughnut chart data set

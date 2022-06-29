@@ -7,7 +7,7 @@ const environment = process.env.NODE_ENV;
 const Collab = ({ group, user }) => {
   const router = useRouter();
 
-  const status = group.status;
+  const status = group?.status;
 
   const redirect = () => {
     if (typeof window !== 'undefined') {
