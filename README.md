@@ -1,5 +1,5 @@
-# Semac
-This is repo for Semac - Semester Management and Collaboration Platform
+# SEMAC
+This is repo for SEMAC - Semester Management and Collaboration Platform
 
 # Technology
 
