@@ -29,7 +29,7 @@ Getting started
 
 To get started with SEMAC, follow these steps:
 
-1.  Clone the repository: `git clone https://github.com/myusername/semac.git`
+1.  Clone the repository: `git clone https://github.com/myusername/SEMAC---Semester-Management-and-Collaboration-Platform.git`
 2.  Navigate to the project directory: `cd semac`
 3.  Install dependencies: `npm install`
 4.  Start the development server: `npm start`
